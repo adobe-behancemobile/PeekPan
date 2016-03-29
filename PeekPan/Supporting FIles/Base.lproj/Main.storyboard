@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="nHF-Ud-Dgx">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="nHF-Ud-Dgx">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -26,7 +27,7 @@
         <!--On-Screen Content Scrubber-->
         <scene sceneID="BbQ-4K-3ZM">
             <objects>
-                <viewController title="On-Screen Content Scrubber" id="UIK-aS-1HM" customClass="OnScreenCollectionViewController" customModule="PeekPanCoordinator" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="On-Screen Content Scrubber" id="UIK-aS-1HM" customClass="OnScreenCollectionViewController" customModule="PeekPan" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="E0q-gn-IpC"/>
                         <viewControllerLayoutGuide type="bottom" id="gcQ-Ya-4IA"/>
@@ -44,7 +45,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="imageCollectionCell" id="jty-LE-kae" customClass="ImageCollectionCell" customModule="PeekPanCoordinator" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="imageCollectionCell" id="jty-LE-kae" customClass="ImageCollectionCell" customModule="PeekPan" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="64" width="100" height="100"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -94,7 +95,7 @@
         <!--Content Preview Scrubber-->
         <scene sceneID="43t-Sb-cbw">
             <objects>
-                <viewController title="Content Preview Scrubber" id="N7P-Oh-G2r" customClass="ContentPreviewCollectionViewController" customModule="PeekPanCoordinator" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Content Preview Scrubber" id="N7P-Oh-G2r" customClass="ContentPreviewCollectionViewController" customModule="PeekPan" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="6mt-cf-AlL"/>
                         <viewControllerLayoutGuide type="bottom" id="igK-1K-kVk"/>
@@ -112,7 +113,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="imageCollectionCell" id="iTC-vP-KU9" customClass="ImageCollectionCell" customModule="PeekPanCoordinator" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="imageCollectionCell" id="iTC-vP-KU9" customClass="ImageCollectionCell" customModule="PeekPan" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="64" width="100" height="100"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -162,7 +163,7 @@
         <!--Image Editor-->
         <scene sceneID="YOn-vi-TmA">
             <objects>
-                <viewController title="Image Editor" id="vfe-L8-Vt7" customClass="ImageEditorController" customModule="PeekPanCoordinator" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Image Editor" id="vfe-L8-Vt7" customClass="ImageEditorController" customModule="PeekPan" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="8EU-QP-LfI"/>
                         <viewControllerLayoutGuide type="bottom" id="Cmu-4k-u8f"/>
@@ -292,7 +293,7 @@
         <!--Demo View Controller-->
         <scene sceneID="yAh-yC-J7N">
             <objects>
-                <viewController id="Hox-oL-FOh" customClass="DemoViewController" customModule="PeekPanCoordinator" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Hox-oL-FOh" customClass="DemoViewController" customModule="PeekPan" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="7qh-nN-dTb"/>
                         <viewControllerLayoutGuide type="bottom" id="g2D-Ye-K9p"/>
@@ -339,7 +340,7 @@
         <!--Image Table View Controller-->
         <scene sceneID="1j2-vk-RLV">
             <objects>
-                <viewController storyboardIdentifier="ImageTableViewController" id="ziC-Db-rOe" customClass="ImageTableViewController" customModule="PeekPanCoordinator" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ImageTableViewController" id="ziC-Db-rOe" customClass="ImageTableViewController" customModule="PeekPan" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Gam-Th-Jtz"/>
                         <viewControllerLayoutGuide type="bottom" id="Kv6-fj-Zt5"/>
@@ -352,7 +353,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="0.0" reuseIdentifier="imageTableCell" rowHeight="600" id="V7Z-Ex-RAS" customClass="ImageTableViewCell" customModule="PeekPanCoordinator" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="0.0" reuseIdentifier="imageTableCell" rowHeight="600" id="V7Z-Ex-RAS" customClass="ImageTableViewCell" customModule="PeekPan" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="600"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="V7Z-Ex-RAS" id="Qgn-ug-qZB">

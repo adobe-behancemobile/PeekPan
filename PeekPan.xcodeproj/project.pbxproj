@@ -7,44 +7,44 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5C96826B1C6A9DE800D4AFFC /* PeekPanCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C9682691C6A9DE800D4AFFC /* PeekPanCoordinator.swift */; };
-		5C96826C1C6A9DE800D4AFFC /* PeekPanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C96826A1C6A9DE800D4AFFC /* PeekPanViewController.swift */; };
-		5C9682711C6A9E8E00D4AFFC /* BaseCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C96826E1C6A9E8E00D4AFFC /* BaseCollectionViewController.swift */; };
-		5C9682721C6A9E8E00D4AFFC /* ImageEditorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C96826F1C6A9E8E00D4AFFC /* ImageEditorController.swift */; };
-		5C9682731C6A9E8E00D4AFFC /* OnScreenCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C9682701C6A9E8E00D4AFFC /* OnScreenCollectionViewController.swift */; };
-		5C9682761C6A9E9D00D4AFFC /* ContentPreviewCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C9682741C6A9E9D00D4AFFC /* ContentPreviewCollectionViewController.swift */; };
-		5C9682771C6A9E9D00D4AFFC /* ImageTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C9682751C6A9E9D00D4AFFC /* ImageTableViewController.swift */; };
-		5C96827A1C6A9EAA00D4AFFC /* ImageCollectionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C9682781C6A9EAA00D4AFFC /* ImageCollectionItem.swift */; };
-		5C96827B1C6A9EAA00D4AFFC /* ImageTableItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C9682791C6A9EAA00D4AFFC /* ImageTableItem.swift */; };
-		5C96827E1C6A9EB600D4AFFC /* ImageCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C96827C1C6A9EB600D4AFFC /* ImageCollectionCell.swift */; };
-		5C96827F1C6A9EB600D4AFFC /* ImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C96827D1C6A9EB600D4AFFC /* ImageTableViewCell.swift */; };
-		5C9682811C6A9EC700D4AFFC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C9682801C6A9EC700D4AFFC /* Assets.xcassets */; };
-		5C9682861C6A9EE400D4AFFC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C9682841C6A9EE400D4AFFC /* Main.storyboard */; };
-		5C96828F1C6AA7C600D4AFFC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C96828D1C6AA7C600D4AFFC /* AppDelegate.swift */; };
-		5CBAD69C1C976F90003279E3 /* DemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CBAD69B1C976F90003279E3 /* DemoViewController.swift */; };
-		5CF904C11C9F6265008046C8 /* PeekPanGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF904C01C9F6265008046C8 /* PeekPanGestureRecognizer.swift */; };
+		5C15FF741CAAE9C900B7E0CD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C15FF721CAAE9C900B7E0CD /* AppDelegate.swift */; };
+		5C15FF781CAAE9DD00B7E0CD /* ImageCollectionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C15FF761CAAE9DD00B7E0CD /* ImageCollectionItem.swift */; };
+		5C15FF791CAAE9DD00B7E0CD /* ImageTableItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C15FF771CAAE9DD00B7E0CD /* ImageTableItem.swift */; };
+		5C15FF7C1CAAE9E900B7E0CD /* ImageCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C15FF7A1CAAE9E900B7E0CD /* ImageCollectionCell.swift */; };
+		5C15FF7D1CAAE9E900B7E0CD /* ImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C15FF7B1CAAE9E900B7E0CD /* ImageTableViewCell.swift */; };
+		5C15FF841CAAE9F700B7E0CD /* BaseCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C15FF7E1CAAE9F700B7E0CD /* BaseCollectionViewController.swift */; };
+		5C15FF851CAAE9F700B7E0CD /* ContentPreviewCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C15FF7F1CAAE9F700B7E0CD /* ContentPreviewCollectionViewController.swift */; };
+		5C15FF861CAAE9F700B7E0CD /* DemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C15FF801CAAE9F700B7E0CD /* DemoViewController.swift */; };
+		5C15FF871CAAE9F700B7E0CD /* ImageEditorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C15FF811CAAE9F700B7E0CD /* ImageEditorController.swift */; };
+		5C15FF881CAAE9F700B7E0CD /* ImageTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C15FF821CAAE9F700B7E0CD /* ImageTableViewController.swift */; };
+		5C15FF891CAAE9F700B7E0CD /* OnScreenCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C15FF831CAAE9F700B7E0CD /* OnScreenCollectionViewController.swift */; };
+		5C15FF8E1CAAEA0400B7E0CD /* PeekPanCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C15FF8B1CAAEA0400B7E0CD /* PeekPanCoordinator.swift */; };
+		5C15FF8F1CAAEA0400B7E0CD /* PeekPanGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C15FF8C1CAAEA0400B7E0CD /* PeekPanGestureRecognizer.swift */; };
+		5C15FF901CAAEA0400B7E0CD /* PeekPanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C15FF8D1CAAEA0400B7E0CD /* PeekPanViewController.swift */; };
+		5C15FF951CAAEA1600B7E0CD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C15FF911CAAEA1600B7E0CD /* Assets.xcassets */; };
+		5C15FF9B1CAAEBFC00B7E0CD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C15FF971CAAEAB300B7E0CD /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5C15FF721CAAE9C900B7E0CD /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = PeekPan/Demo/AppDelegate.swift; sourceTree = SOURCE_ROOT; };
+		5C15FF731CAAE9C900B7E0CD /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = PeekPan/Demo/Info.plist; sourceTree = SOURCE_ROOT; };
+		5C15FF761CAAE9DD00B7E0CD /* ImageCollectionItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageCollectionItem.swift; path = PeekPan/Demo/ImageCollectionItem.swift; sourceTree = SOURCE_ROOT; };
+		5C15FF771CAAE9DD00B7E0CD /* ImageTableItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageTableItem.swift; path = PeekPan/Demo/ImageTableItem.swift; sourceTree = SOURCE_ROOT; };
+		5C15FF7A1CAAE9E900B7E0CD /* ImageCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageCollectionCell.swift; path = PeekPan/Demo/ImageCollectionCell.swift; sourceTree = SOURCE_ROOT; };
+		5C15FF7B1CAAE9E900B7E0CD /* ImageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageTableViewCell.swift; path = PeekPan/Demo/ImageTableViewCell.swift; sourceTree = SOURCE_ROOT; };
+		5C15FF7E1CAAE9F700B7E0CD /* BaseCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseCollectionViewController.swift; path = PeekPan/Demo/BaseCollectionViewController.swift; sourceTree = SOURCE_ROOT; };
+		5C15FF7F1CAAE9F700B7E0CD /* ContentPreviewCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContentPreviewCollectionViewController.swift; path = PeekPan/Demo/ContentPreviewCollectionViewController.swift; sourceTree = SOURCE_ROOT; };
+		5C15FF801CAAE9F700B7E0CD /* DemoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DemoViewController.swift; path = PeekPan/Demo/DemoViewController.swift; sourceTree = SOURCE_ROOT; };
+		5C15FF811CAAE9F700B7E0CD /* ImageEditorController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageEditorController.swift; path = PeekPan/Demo/ImageEditorController.swift; sourceTree = SOURCE_ROOT; };
+		5C15FF821CAAE9F700B7E0CD /* ImageTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageTableViewController.swift; path = PeekPan/Demo/ImageTableViewController.swift; sourceTree = SOURCE_ROOT; };
+		5C15FF831CAAE9F700B7E0CD /* OnScreenCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OnScreenCollectionViewController.swift; path = PeekPan/Demo/OnScreenCollectionViewController.swift; sourceTree = SOURCE_ROOT; };
+		5C15FF8B1CAAEA0400B7E0CD /* PeekPanCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PeekPanCoordinator.swift; path = PeekPan/PeekPan/PeekPanCoordinator.swift; sourceTree = SOURCE_ROOT; };
+		5C15FF8C1CAAEA0400B7E0CD /* PeekPanGestureRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PeekPanGestureRecognizer.swift; path = PeekPan/PeekPan/PeekPanGestureRecognizer.swift; sourceTree = SOURCE_ROOT; };
+		5C15FF8D1CAAEA0400B7E0CD /* PeekPanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PeekPanViewController.swift; path = PeekPan/PeekPan/PeekPanViewController.swift; sourceTree = SOURCE_ROOT; };
+		5C15FF911CAAEA1600B7E0CD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "PeekPan/Supporting FIles/Assets.xcassets"; sourceTree = SOURCE_ROOT; };
+		5C15FF981CAAEAB300B7E0CD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "PeekPan/Supporting FIles/Base.lproj/Main.storyboard"; sourceTree = SOURCE_ROOT; };
+		5C15FF9A1CAAEB9900B7E0CD /* PeekPan-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "PeekPan-Bridging-Header.h"; path = "PeekPan/PeekPan/PeekPan-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
 		5C7002601C6285A300E1C41B /* PeekPan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PeekPan.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		5C9682691C6A9DE800D4AFFC /* PeekPanCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PeekPanCoordinator.swift; path = PeekPanCoordinator/PeekPanCoordinator.swift; sourceTree = "<group>"; };
-		5C96826A1C6A9DE800D4AFFC /* PeekPanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PeekPanViewController.swift; path = PeekPanCoordinator/PeekPanViewController.swift; sourceTree = "<group>"; };
-		5C96826E1C6A9E8E00D4AFFC /* BaseCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseCollectionViewController.swift; path = Example/BaseCollectionViewController.swift; sourceTree = "<group>"; };
-		5C96826F1C6A9E8E00D4AFFC /* ImageEditorController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageEditorController.swift; path = Example/ImageEditorController.swift; sourceTree = "<group>"; };
-		5C9682701C6A9E8E00D4AFFC /* OnScreenCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OnScreenCollectionViewController.swift; path = Example/OnScreenCollectionViewController.swift; sourceTree = "<group>"; };
-		5C9682741C6A9E9D00D4AFFC /* ContentPreviewCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContentPreviewCollectionViewController.swift; path = Example/ContentPreviewCollectionViewController.swift; sourceTree = "<group>"; };
-		5C9682751C6A9E9D00D4AFFC /* ImageTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageTableViewController.swift; path = Example/ImageTableViewController.swift; sourceTree = "<group>"; };
-		5C9682781C6A9EAA00D4AFFC /* ImageCollectionItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageCollectionItem.swift; path = Example/ImageCollectionItem.swift; sourceTree = "<group>"; };
-		5C9682791C6A9EAA00D4AFFC /* ImageTableItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageTableItem.swift; path = Example/ImageTableItem.swift; sourceTree = "<group>"; };
-		5C96827C1C6A9EB600D4AFFC /* ImageCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageCollectionCell.swift; path = Example/ImageCollectionCell.swift; sourceTree = "<group>"; };
-		5C96827D1C6A9EB600D4AFFC /* ImageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageTableViewCell.swift; path = Example/ImageTableViewCell.swift; sourceTree = "<group>"; };
-		5C9682801C6A9EC700D4AFFC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "Supporting FIles/Assets.xcassets"; sourceTree = "<group>"; };
-		5C9682851C6A9EE400D4AFFC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "Supporting FIles/Base.lproj/Main.storyboard"; sourceTree = "<group>"; };
-		5C96828D1C6AA7C600D4AFFC /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Example/AppDelegate.swift; sourceTree = "<group>"; };
-		5C96828E1C6AA7C600D4AFFC /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Example/Info.plist; sourceTree = "<group>"; };
-		5CBAD69B1C976F90003279E3 /* DemoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoViewController.swift; sourceTree = "<group>"; };
-		5CF904C01C9F6265008046C8 /* PeekPanGestureRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PeekPanGestureRecognizer.swift; path = PeekPanCoordinator/PeekPanGestureRecognizer.swift; sourceTree = "<group>"; };
-		5CF904C21C9F62BF008046C8 /* PeekPanCoordinator-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "PeekPanCoordinator-Bridging-Header.h"; path = "PeekPanCoordinator/PeekPanCoordinator-Bridging-Header.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,33 +78,32 @@
 			isa = PBXGroup;
 			children = (
 				5C96826D1C6A9E2700D4AFFC /* Demo */,
-				5C7002791C62873A00E1C41B /* PeekPanCoordinator */,
+				5C7002791C62873A00E1C41B /* PeekPan */,
 				5C9682681C6A9DBF00D4AFFC /* Supporting Files */,
 			);
-			name = PeekPan;
-			path = PeekPanCoordinator;
+			path = PeekPan;
 			sourceTree = "<group>";
 		};
-		5C7002791C62873A00E1C41B /* PeekPanCoordinator */ = {
+		5C7002791C62873A00E1C41B /* PeekPan */ = {
 			isa = PBXGroup;
 			children = (
-				5CF904C21C9F62BF008046C8 /* PeekPanCoordinator-Bridging-Header.h */,
-				5C9682691C6A9DE800D4AFFC /* PeekPanCoordinator.swift */,
-				5CF904C01C9F6265008046C8 /* PeekPanGestureRecognizer.swift */,
-				5C96826A1C6A9DE800D4AFFC /* PeekPanViewController.swift */,
+				5C15FF9A1CAAEB9900B7E0CD /* PeekPan-Bridging-Header.h */,
+				5C15FF8B1CAAEA0400B7E0CD /* PeekPanCoordinator.swift */,
+				5C15FF8C1CAAEA0400B7E0CD /* PeekPanGestureRecognizer.swift */,
+				5C15FF8D1CAAEA0400B7E0CD /* PeekPanViewController.swift */,
 			);
-			name = PeekPanCoordinator;
+			name = PeekPan;
 			sourceTree = "<group>";
 		};
 		5C7002821C62B63400E1C41B /* controller */ = {
 			isa = PBXGroup;
 			children = (
-				5C96826E1C6A9E8E00D4AFFC /* BaseCollectionViewController.swift */,
-				5C9682741C6A9E9D00D4AFFC /* ContentPreviewCollectionViewController.swift */,
-				5C96826F1C6A9E8E00D4AFFC /* ImageEditorController.swift */,
-				5C9682751C6A9E9D00D4AFFC /* ImageTableViewController.swift */,
-				5C9682701C6A9E8E00D4AFFC /* OnScreenCollectionViewController.swift */,
-				5CBAD69B1C976F90003279E3 /* DemoViewController.swift */,
+				5C15FF7E1CAAE9F700B7E0CD /* BaseCollectionViewController.swift */,
+				5C15FF7F1CAAE9F700B7E0CD /* ContentPreviewCollectionViewController.swift */,
+				5C15FF801CAAE9F700B7E0CD /* DemoViewController.swift */,
+				5C15FF811CAAE9F700B7E0CD /* ImageEditorController.swift */,
+				5C15FF821CAAE9F700B7E0CD /* ImageTableViewController.swift */,
+				5C15FF831CAAE9F700B7E0CD /* OnScreenCollectionViewController.swift */,
 			);
 			name = controller;
 			sourceTree = "<group>";
@@ -112,8 +111,8 @@
 		5C7002831C62B63A00E1C41B /* view */ = {
 			isa = PBXGroup;
 			children = (
-				5C96827C1C6A9EB600D4AFFC /* ImageCollectionCell.swift */,
-				5C96827D1C6A9EB600D4AFFC /* ImageTableViewCell.swift */,
+				5C15FF7A1CAAE9E900B7E0CD /* ImageCollectionCell.swift */,
+				5C15FF7B1CAAE9E900B7E0CD /* ImageTableViewCell.swift */,
 			);
 			name = view;
 			sourceTree = "<group>";
@@ -121,8 +120,8 @@
 		5C9682681C6A9DBF00D4AFFC /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				5C9682801C6A9EC700D4AFFC /* Assets.xcassets */,
-				5C9682841C6A9EE400D4AFFC /* Main.storyboard */,
+				5C15FF911CAAEA1600B7E0CD /* Assets.xcassets */,
+				5C15FF971CAAEAB300B7E0CD /* Main.storyboard */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -130,8 +129,8 @@
 		5C96826D1C6A9E2700D4AFFC /* Demo */ = {
 			isa = PBXGroup;
 			children = (
-				5C96828D1C6AA7C600D4AFFC /* AppDelegate.swift */,
-				5C96828E1C6AA7C600D4AFFC /* Info.plist */,
+				5C15FF721CAAE9C900B7E0CD /* AppDelegate.swift */,
+				5C15FF731CAAE9C900B7E0CD /* Info.plist */,
 				5CC183171C63A67400E12AD0 /* model */,
 				5C7002831C62B63A00E1C41B /* view */,
 				5C7002821C62B63400E1C41B /* controller */,
@@ -142,8 +141,8 @@
 		5CC183171C63A67400E12AD0 /* model */ = {
 			isa = PBXGroup;
 			children = (
-				5C9682781C6A9EAA00D4AFFC /* ImageCollectionItem.swift */,
-				5C9682791C6A9EAA00D4AFFC /* ImageTableItem.swift */,
+				5C15FF761CAAE9DD00B7E0CD /* ImageCollectionItem.swift */,
+				5C15FF771CAAE9DD00B7E0CD /* ImageTableItem.swift */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -164,7 +163,7 @@
 			dependencies = (
 			);
 			name = PeekPan;
-			productName = PeekPanCoordinator;
+			productName = PeekPan;
 			productReference = 5C7002601C6285A300E1C41B /* PeekPan.app */;
 			productType = "com.apple.product-type.application";
 		};
@@ -206,8 +205,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5C9682861C6A9EE400D4AFFC /* Main.storyboard in Resources */,
-				5C9682811C6A9EC700D4AFFC /* Assets.xcassets in Resources */,
+				5C15FF9B1CAAEBFC00B7E0CD /* Main.storyboard in Resources */,
+				5C15FF951CAAEA1600B7E0CD /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -218,30 +217,30 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5C96826B1C6A9DE800D4AFFC /* PeekPanCoordinator.swift in Sources */,
-				5C96827E1C6A9EB600D4AFFC /* ImageCollectionCell.swift in Sources */,
-				5C96827B1C6A9EAA00D4AFFC /* ImageTableItem.swift in Sources */,
-				5C9682721C6A9E8E00D4AFFC /* ImageEditorController.swift in Sources */,
-				5C9682761C6A9E9D00D4AFFC /* ContentPreviewCollectionViewController.swift in Sources */,
-				5C96827F1C6A9EB600D4AFFC /* ImageTableViewCell.swift in Sources */,
-				5CBAD69C1C976F90003279E3 /* DemoViewController.swift in Sources */,
-				5C9682771C6A9E9D00D4AFFC /* ImageTableViewController.swift in Sources */,
-				5C96828F1C6AA7C600D4AFFC /* AppDelegate.swift in Sources */,
-				5C9682711C6A9E8E00D4AFFC /* BaseCollectionViewController.swift in Sources */,
-				5CF904C11C9F6265008046C8 /* PeekPanGestureRecognizer.swift in Sources */,
-				5C96827A1C6A9EAA00D4AFFC /* ImageCollectionItem.swift in Sources */,
-				5C96826C1C6A9DE800D4AFFC /* PeekPanViewController.swift in Sources */,
-				5C9682731C6A9E8E00D4AFFC /* OnScreenCollectionViewController.swift in Sources */,
+				5C15FF8E1CAAEA0400B7E0CD /* PeekPanCoordinator.swift in Sources */,
+				5C15FF861CAAE9F700B7E0CD /* DemoViewController.swift in Sources */,
+				5C15FF741CAAE9C900B7E0CD /* AppDelegate.swift in Sources */,
+				5C15FF8F1CAAEA0400B7E0CD /* PeekPanGestureRecognizer.swift in Sources */,
+				5C15FF901CAAEA0400B7E0CD /* PeekPanViewController.swift in Sources */,
+				5C15FF7C1CAAE9E900B7E0CD /* ImageCollectionCell.swift in Sources */,
+				5C15FF881CAAE9F700B7E0CD /* ImageTableViewController.swift in Sources */,
+				5C15FF781CAAE9DD00B7E0CD /* ImageCollectionItem.swift in Sources */,
+				5C15FF891CAAE9F700B7E0CD /* OnScreenCollectionViewController.swift in Sources */,
+				5C15FF7D1CAAE9E900B7E0CD /* ImageTableViewCell.swift in Sources */,
+				5C15FF791CAAE9DD00B7E0CD /* ImageTableItem.swift in Sources */,
+				5C15FF871CAAE9F700B7E0CD /* ImageEditorController.swift in Sources */,
+				5C15FF841CAAE9F700B7E0CD /* BaseCollectionViewController.swift in Sources */,
+				5C15FF851CAAE9F700B7E0CD /* ContentPreviewCollectionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		5C9682841C6A9EE400D4AFFC /* Main.storyboard */ = {
+		5C15FF971CAAEAB300B7E0CD /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				5C9682851C6A9EE400D4AFFC /* Base */,
+				5C15FF981CAAEAB300B7E0CD /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -285,7 +284,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -324,7 +323,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -336,14 +335,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				INFOPLIST_FILE = "$(SRCROOT)/PeekPanCoordinator/Example/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				INFOPLIST_FILE = "$(SRCROOT)/PeekPan/Demo/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.behance.PeekPan;
 				PRODUCT_NAME = PeekPan;
-				SWIFT_OBJC_BRIDGING_HEADER = "PeekPanCoordinator/PeekPanCoordinator/PeekPanCoordinator-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "PeekPan/PeekPan/$(PRODUCT_NAME)-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -352,14 +352,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				INFOPLIST_FILE = "$(SRCROOT)/PeekPanCoordinator/Example/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				INFOPLIST_FILE = "$(SRCROOT)/PeekPan/Demo/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.behance.PeekPan;
 				PRODUCT_NAME = PeekPan;
-				SWIFT_OBJC_BRIDGING_HEADER = "PeekPanCoordinator/PeekPanCoordinator/PeekPanCoordinator-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "PeekPan/PeekPan/$(PRODUCT_NAME)-Bridging-Header.h";
 			};
 			name = Release;
 		};
