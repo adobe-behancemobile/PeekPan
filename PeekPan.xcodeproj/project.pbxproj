@@ -1,0 +1,390 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5C96826B1C6A9DE800D4AFFC /* PeekPanCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C9682691C6A9DE800D4AFFC /* PeekPanCoordinator.swift */; };
+		5C96826C1C6A9DE800D4AFFC /* PeekPanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C96826A1C6A9DE800D4AFFC /* PeekPanViewController.swift */; };
+		5C9682711C6A9E8E00D4AFFC /* BaseCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C96826E1C6A9E8E00D4AFFC /* BaseCollectionViewController.swift */; };
+		5C9682721C6A9E8E00D4AFFC /* ImageEditorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C96826F1C6A9E8E00D4AFFC /* ImageEditorController.swift */; };
+		5C9682731C6A9E8E00D4AFFC /* OnScreenCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C9682701C6A9E8E00D4AFFC /* OnScreenCollectionViewController.swift */; };
+		5C9682761C6A9E9D00D4AFFC /* ContentPreviewCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C9682741C6A9E9D00D4AFFC /* ContentPreviewCollectionViewController.swift */; };
+		5C9682771C6A9E9D00D4AFFC /* ImageTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C9682751C6A9E9D00D4AFFC /* ImageTableViewController.swift */; };
+		5C96827A1C6A9EAA00D4AFFC /* ImageCollectionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C9682781C6A9EAA00D4AFFC /* ImageCollectionItem.swift */; };
+		5C96827B1C6A9EAA00D4AFFC /* ImageTableItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C9682791C6A9EAA00D4AFFC /* ImageTableItem.swift */; };
+		5C96827E1C6A9EB600D4AFFC /* ImageCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C96827C1C6A9EB600D4AFFC /* ImageCollectionCell.swift */; };
+		5C96827F1C6A9EB600D4AFFC /* ImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C96827D1C6A9EB600D4AFFC /* ImageTableViewCell.swift */; };
+		5C9682811C6A9EC700D4AFFC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C9682801C6A9EC700D4AFFC /* Assets.xcassets */; };
+		5C9682861C6A9EE400D4AFFC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C9682841C6A9EE400D4AFFC /* Main.storyboard */; };
+		5C96828F1C6AA7C600D4AFFC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C96828D1C6AA7C600D4AFFC /* AppDelegate.swift */; };
+		5CBAD69C1C976F90003279E3 /* DemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CBAD69B1C976F90003279E3 /* DemoViewController.swift */; };
+		5CF904C11C9F6265008046C8 /* PeekPanGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF904C01C9F6265008046C8 /* PeekPanGestureRecognizer.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		5C7002601C6285A300E1C41B /* PeekPan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PeekPan.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5C9682691C6A9DE800D4AFFC /* PeekPanCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PeekPanCoordinator.swift; path = PeekPanCoordinator/PeekPanCoordinator.swift; sourceTree = "<group>"; };
+		5C96826A1C6A9DE800D4AFFC /* PeekPanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PeekPanViewController.swift; path = PeekPanCoordinator/PeekPanViewController.swift; sourceTree = "<group>"; };
+		5C96826E1C6A9E8E00D4AFFC /* BaseCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseCollectionViewController.swift; path = Example/BaseCollectionViewController.swift; sourceTree = "<group>"; };
+		5C96826F1C6A9E8E00D4AFFC /* ImageEditorController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageEditorController.swift; path = Example/ImageEditorController.swift; sourceTree = "<group>"; };
+		5C9682701C6A9E8E00D4AFFC /* OnScreenCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OnScreenCollectionViewController.swift; path = Example/OnScreenCollectionViewController.swift; sourceTree = "<group>"; };
+		5C9682741C6A9E9D00D4AFFC /* ContentPreviewCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContentPreviewCollectionViewController.swift; path = Example/ContentPreviewCollectionViewController.swift; sourceTree = "<group>"; };
+		5C9682751C6A9E9D00D4AFFC /* ImageTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageTableViewController.swift; path = Example/ImageTableViewController.swift; sourceTree = "<group>"; };
+		5C9682781C6A9EAA00D4AFFC /* ImageCollectionItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageCollectionItem.swift; path = Example/ImageCollectionItem.swift; sourceTree = "<group>"; };
+		5C9682791C6A9EAA00D4AFFC /* ImageTableItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageTableItem.swift; path = Example/ImageTableItem.swift; sourceTree = "<group>"; };
+		5C96827C1C6A9EB600D4AFFC /* ImageCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageCollectionCell.swift; path = Example/ImageCollectionCell.swift; sourceTree = "<group>"; };
+		5C96827D1C6A9EB600D4AFFC /* ImageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageTableViewCell.swift; path = Example/ImageTableViewCell.swift; sourceTree = "<group>"; };
+		5C9682801C6A9EC700D4AFFC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "Supporting FIles/Assets.xcassets"; sourceTree = "<group>"; };
+		5C9682851C6A9EE400D4AFFC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "Supporting FIles/Base.lproj/Main.storyboard"; sourceTree = "<group>"; };
+		5C96828D1C6AA7C600D4AFFC /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Example/AppDelegate.swift; sourceTree = "<group>"; };
+		5C96828E1C6AA7C600D4AFFC /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Example/Info.plist; sourceTree = "<group>"; };
+		5CBAD69B1C976F90003279E3 /* DemoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoViewController.swift; sourceTree = "<group>"; };
+		5CF904C01C9F6265008046C8 /* PeekPanGestureRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PeekPanGestureRecognizer.swift; path = PeekPanCoordinator/PeekPanGestureRecognizer.swift; sourceTree = "<group>"; };
+		5CF904C21C9F62BF008046C8 /* PeekPanCoordinator-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "PeekPanCoordinator-Bridging-Header.h"; path = "PeekPanCoordinator/PeekPanCoordinator-Bridging-Header.h"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5C70025D1C6285A300E1C41B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5C7002571C6285A300E1C41B = {
+			isa = PBXGroup;
+			children = (
+				5C7002621C6285A300E1C41B /* PeekPan */,
+				5C7002611C6285A300E1C41B /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		5C7002611C6285A300E1C41B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5C7002601C6285A300E1C41B /* PeekPan.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5C7002621C6285A300E1C41B /* PeekPan */ = {
+			isa = PBXGroup;
+			children = (
+				5C96826D1C6A9E2700D4AFFC /* Demo */,
+				5C7002791C62873A00E1C41B /* PeekPanCoordinator */,
+				5C9682681C6A9DBF00D4AFFC /* Supporting Files */,
+			);
+			name = PeekPan;
+			path = PeekPanCoordinator;
+			sourceTree = "<group>";
+		};
+		5C7002791C62873A00E1C41B /* PeekPanCoordinator */ = {
+			isa = PBXGroup;
+			children = (
+				5CF904C21C9F62BF008046C8 /* PeekPanCoordinator-Bridging-Header.h */,
+				5C9682691C6A9DE800D4AFFC /* PeekPanCoordinator.swift */,
+				5CF904C01C9F6265008046C8 /* PeekPanGestureRecognizer.swift */,
+				5C96826A1C6A9DE800D4AFFC /* PeekPanViewController.swift */,
+			);
+			name = PeekPanCoordinator;
+			sourceTree = "<group>";
+		};
+		5C7002821C62B63400E1C41B /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				5C96826E1C6A9E8E00D4AFFC /* BaseCollectionViewController.swift */,
+				5C9682741C6A9E9D00D4AFFC /* ContentPreviewCollectionViewController.swift */,
+				5C96826F1C6A9E8E00D4AFFC /* ImageEditorController.swift */,
+				5C9682751C6A9E9D00D4AFFC /* ImageTableViewController.swift */,
+				5C9682701C6A9E8E00D4AFFC /* OnScreenCollectionViewController.swift */,
+				5CBAD69B1C976F90003279E3 /* DemoViewController.swift */,
+			);
+			name = controller;
+			sourceTree = "<group>";
+		};
+		5C7002831C62B63A00E1C41B /* view */ = {
+			isa = PBXGroup;
+			children = (
+				5C96827C1C6A9EB600D4AFFC /* ImageCollectionCell.swift */,
+				5C96827D1C6A9EB600D4AFFC /* ImageTableViewCell.swift */,
+			);
+			name = view;
+			sourceTree = "<group>";
+		};
+		5C9682681C6A9DBF00D4AFFC /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				5C9682801C6A9EC700D4AFFC /* Assets.xcassets */,
+				5C9682841C6A9EE400D4AFFC /* Main.storyboard */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		5C96826D1C6A9E2700D4AFFC /* Demo */ = {
+			isa = PBXGroup;
+			children = (
+				5C96828D1C6AA7C600D4AFFC /* AppDelegate.swift */,
+				5C96828E1C6AA7C600D4AFFC /* Info.plist */,
+				5CC183171C63A67400E12AD0 /* model */,
+				5C7002831C62B63A00E1C41B /* view */,
+				5C7002821C62B63400E1C41B /* controller */,
+			);
+			name = Demo;
+			sourceTree = "<group>";
+		};
+		5CC183171C63A67400E12AD0 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				5C9682781C6A9EAA00D4AFFC /* ImageCollectionItem.swift */,
+				5C9682791C6A9EAA00D4AFFC /* ImageTableItem.swift */,
+			);
+			name = model;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5C70025F1C6285A300E1C41B /* PeekPan */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5C7002721C6285A300E1C41B /* Build configuration list for PBXNativeTarget "PeekPan" */;
+			buildPhases = (
+				5C70025C1C6285A300E1C41B /* Sources */,
+				5C70025D1C6285A300E1C41B /* Frameworks */,
+				5C70025E1C6285A300E1C41B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PeekPan;
+			productName = PeekPanCoordinator;
+			productReference = 5C7002601C6285A300E1C41B /* PeekPan.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5C7002581C6285A300E1C41B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0720;
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = behance;
+				TargetAttributes = {
+					5C70025F1C6285A300E1C41B = {
+						CreatedOnToolsVersion = 7.2;
+					};
+				};
+			};
+			buildConfigurationList = 5C70025B1C6285A300E1C41B /* Build configuration list for PBXProject "PeekPan" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 5C7002571C6285A300E1C41B;
+			productRefGroup = 5C7002611C6285A300E1C41B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5C70025F1C6285A300E1C41B /* PeekPan */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5C70025E1C6285A300E1C41B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5C9682861C6A9EE400D4AFFC /* Main.storyboard in Resources */,
+				5C9682811C6A9EC700D4AFFC /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5C70025C1C6285A300E1C41B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5C96826B1C6A9DE800D4AFFC /* PeekPanCoordinator.swift in Sources */,
+				5C96827E1C6A9EB600D4AFFC /* ImageCollectionCell.swift in Sources */,
+				5C96827B1C6A9EAA00D4AFFC /* ImageTableItem.swift in Sources */,
+				5C9682721C6A9E8E00D4AFFC /* ImageEditorController.swift in Sources */,
+				5C9682761C6A9E9D00D4AFFC /* ContentPreviewCollectionViewController.swift in Sources */,
+				5C96827F1C6A9EB600D4AFFC /* ImageTableViewCell.swift in Sources */,
+				5CBAD69C1C976F90003279E3 /* DemoViewController.swift in Sources */,
+				5C9682771C6A9E9D00D4AFFC /* ImageTableViewController.swift in Sources */,
+				5C96828F1C6AA7C600D4AFFC /* AppDelegate.swift in Sources */,
+				5C9682711C6A9E8E00D4AFFC /* BaseCollectionViewController.swift in Sources */,
+				5CF904C11C9F6265008046C8 /* PeekPanGestureRecognizer.swift in Sources */,
+				5C96827A1C6A9EAA00D4AFFC /* ImageCollectionItem.swift in Sources */,
+				5C96826C1C6A9DE800D4AFFC /* PeekPanViewController.swift in Sources */,
+				5C9682731C6A9E8E00D4AFFC /* OnScreenCollectionViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		5C9682841C6A9EE400D4AFFC /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5C9682851C6A9EE400D4AFFC /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		5C7002701C6285A300E1C41B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		5C7002711C6285A300E1C41B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		5C7002731C6285A300E1C41B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = "$(SRCROOT)/PeekPanCoordinator/Example/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.behance.PeekPan;
+				PRODUCT_NAME = PeekPan;
+				SWIFT_OBJC_BRIDGING_HEADER = "PeekPanCoordinator/PeekPanCoordinator/PeekPanCoordinator-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		5C7002741C6285A300E1C41B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = "$(SRCROOT)/PeekPanCoordinator/Example/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.behance.PeekPan;
+				PRODUCT_NAME = PeekPan;
+				SWIFT_OBJC_BRIDGING_HEADER = "PeekPanCoordinator/PeekPanCoordinator/PeekPanCoordinator-Bridging-Header.h";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5C70025B1C6285A300E1C41B /* Build configuration list for PBXProject "PeekPan" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5C7002701C6285A300E1C41B /* Debug */,
+				5C7002711C6285A300E1C41B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5C7002721C6285A300E1C41B /* Build configuration list for PBXNativeTarget "PeekPan" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5C7002731C6285A300E1C41B /* Debug */,
+				5C7002741C6285A300E1C41B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 5C7002581C6285A300E1C41B /* Project object */;
+}
