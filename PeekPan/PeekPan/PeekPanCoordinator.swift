@@ -18,23 +18,29 @@
 
 import UIKit
 
+/// PeekPanCoordinatorDelegate Protocol
 @objc public protocol PeekPanCoordinatorDelegate {
+    /// Tells the delegate that the gesture recognizer began tracking
     optional func peekPanCoordinatorBegan(peekPanCoordinator: PeekPanCoordinator)
+    /// Tells the delegate that the gesture recognizer received an update
     optional func peekPanCoordinatorUpdated(peekPanCoordinator: PeekPanCoordinator)
+    /// Tells the delegate that the gesture recognizer ended tracking
     optional func peekPanCoordinatorEnded(peekPanCoordinator: PeekPanCoordinator)
+    /// Tells the delegate that the coordinator changed its current index
     optional func peekPanCoordinator(peekPanCoordinator: PeekPanCoordinator, movedTo index: Int)
 }
 
+/// PeekPanCoordinatorDataSource Protocol
 @objc public protocol PeekPanCoordinatorDataSource {
     /**
-     Sets the  maximum index of a range of indices. The maximum index has to be greater than or equal to the minimum index for "peekPanCoordinator:movedTo:" to work. Method is called upon setup.
+     Sets the  maximum index of a range of indices. The maximum index has to be greater than or equal to the minimum index for "peekPanCoordinator:movedTo:" to work. Method is called upon setup and is required.
      
      Returns: Default is 0.
      */
     func maximumIndex(for peekPanCoordinator: PeekPanCoordinator) -> Int
     
     /**
-     Have the minimum point begin at the starting point. Method is called upon setup.
+     Have the minimum point begin at the starting point. Method is called upon setup and is required.
      
      Returns: Default is false.
      */
@@ -76,71 +82,108 @@ import UIKit
     optional func horizontalMargin(for peekPanCoordinator: PeekPanCoordinator) -> CGFloat
 }
 
-/**
- Used to represent the current state of PeekPanCoordinator.
- 
- - Initialized:  Has been initialized or reset.
- - Ready:        Finished setup and is ready to start tracking the user's touch location.
- - Peeking:      Tracking user's touch location while the Peek preview is displayed.
- - Popped:       Stopped tracking due to the user committing the previewed view controller.
- - Ended:        Stopped tracking due to the user releasing touch.
- */
+/// Used to represent the current state of PeekPanCoordinator.
 @objc public enum PeekPanState : Int {
+    /// Has been initialized or reset.
     case Initialized
+    /// Finished setup and is ready to start tracking the user's touch location.
     case Ready
+    /// Tracking the user's touch location while the Peek preview is displayed.
     case Peeking
+    /// Stopped tracking due to the user committing the view controller.
     case Popped
+    /// Stopped tracking due to the user's touch being released.
     case Ended
 }
 
+/// PeekPanCoordinator uses the data given by its data source to connect an instance of PeekPanGestureRecognizer to a range of indices.
 public class PeekPanCoordinator : NSObject, UIGestureRecognizerDelegate {
+    
     // MARK: Constants
     
+    /// Default number of indices that the user can pan through while Peeking.
     public static let DefaultPeekRange = 8
+    /// Default size of the panning area's left and right margins.
     public static let DefaultHorizontalMargin: CGFloat = 40.0
     
     // MARK: Properties
     
+    /// A reference to a coordinator that finished setting up.
     public weak static var currentCoordinator: PeekPanCoordinator?
     
+    /// The view that PeekPanGestureRecognizer will use to track the user's touch.
     public private(set) weak var sourceView: UIView!
-    public private(set) var state: PeekPanState = .Initialized
+    /// The PeekPanState that the coordinator is in.
+    public private(set) var state: PeekPanState
+    /// PeekPanCoordinatorDelegate reference.
     public weak var delegate: PeekPanCoordinatorDelegate?
+    /// PeekPanDataSource reference.
     public weak var dataSource: PeekPanCoordinatorDataSource?
     private var gestureRecognizer: PeekPanGestureRecognizer!
     
-    private var startFromMinimum = false
-    private var peekRange = DefaultPeekRange
-    private var horizontalMargin = DefaultHorizontalMargin
-    private var isUsingDelegateMinPoint = false
-    private var isUsingDelegateMaxPoint = false
+    private var startFromMinimum: Bool
+    private var peekRange: Int
+    private var horizontalMargin: CGFloat
+    private var isUsingDelegateMinPoint: Bool
+    private var isUsingDelegateMaxPoint: Bool
     
-    public private(set) var startingIndex = 0
-    public private(set) var previousIndex = 0
-    public private(set) var currentIndex = 0
-    public private(set) var minimumIndex = 0
-    public private(set) var maximumIndex = 0
+    /// The index that the coordinator starts at.
+    public private(set) var startingIndex: Int
+    /// The index that the coordinator was previously at.
+    public private(set) var previousIndex: Int
+    /// The index that the coordinator is currently at.
+    public private(set) var currentIndex: Int
+    /// The minimum index that the coordinator can reach.
+    public private(set) var minimumIndex: Int
+    /// The maximum index that the coordinator can reach.
+    public private(set) var maximumIndex: Int
     
-    public private(set) var startingPoint = CGPointZero
-    public private(set) var currentPoint = CGPointZero
-    public private(set) var minimumPoint = CGPointZero
-    public private(set) var maximumPoint = CGPointZero
+    /// The point that the coordinator starts at.
+    public private(set) var startingPoint: CGPoint
+    /// The point that the coordinator is currently at.
+    public private(set) var currentPoint: CGPoint
+    /// The minimum point that correlates with the minimum index.
+    public private(set) var minimumPoint: CGPoint
+    /// The maximum point that correlates with the maximum index.
+    public private(set) var maximumPoint: CGPoint
     
+    /// The leftmost point that the coordinator will track.
     public var leftMarginPoint: CGPoint {
         return CGPointMake(horizontalMargin, currentPoint.y)
     }
+    /// The rightmost point that the coordinator will track.
     public var rightMarginPoint: CGPoint {
         return CGPointMake(CGRectGetWidth(sourceView.bounds) - horizontalMargin, currentPoint.y)
     }
     
-    /// Value from 0.0 to 1.0
+    /// The difference between the current point and the minimum point in relation to the size of the panning area. Value from 0.0 to 1.0.
     public var percentage: CGFloat {
         return max(min((currentPoint.x - minimumPoint.x) / (maximumPoint.x - minimumPoint.x), 1.0), 0.0)
     }
     
     // MARK: Init
     
+    /// Required init that takes in the source view.
     required public init(sourceView view: UIView!) {
+        state = .Initialized
+        
+        startFromMinimum = false
+        peekRange = self.dynamicType.DefaultPeekRange
+        horizontalMargin = self.dynamicType.DefaultHorizontalMargin
+        isUsingDelegateMinPoint = false
+        isUsingDelegateMaxPoint = false
+        
+        startingIndex = 0
+        previousIndex = 0
+        currentIndex = 0
+        minimumIndex = 0
+        maximumIndex = 0
+        
+        startingPoint = CGPointZero
+        currentPoint = CGPointZero
+        minimumPoint = CGPointZero
+        maximumPoint = CGPointZero
+        
         super.init()
         
         self.sourceView = view
@@ -161,10 +204,12 @@ public class PeekPanCoordinator : NSObject, UIGestureRecognizerDelegate {
     
     // MARK: Setup
     
+    /// Gather data needed to start the coordinator. Required to track the user's touch.
     public func setup() {
         setup(at: 0)
     }
     
+    /// Gather data needed to start the coordinator at a specified index. Required to track the user's touch.
     public func setup(at index: Int) {
         reset()
         
@@ -291,6 +336,7 @@ public class PeekPanCoordinator : NSObject, UIGestureRecognizerDelegate {
         delegate?.peekPanCoordinatorUpdated?(self)
     }
     
+    /// Called to end tracking the user's touch. Parameter is used to identify whether the coordinator is ending due to a committed view controller or not. Will reset the coordinator's data and set currentCoordinator as nil.
     public func end(popped: Bool) {
         state = popped ? .Popped : .Ended
         delegate?.peekPanCoordinatorEnded?(self)
@@ -340,6 +386,7 @@ public class PeekPanCoordinator : NSObject, UIGestureRecognizerDelegate {
         }
     }
     
+    /// Used to refetch data from the data source.
     public func reloadData() {
         minimumIndex = dataSource?.minimumIndex?(for: self) ?? 0
         maximumIndex = dataSource?.maximumIndex(for: self) ?? 0
@@ -370,6 +417,7 @@ public class PeekPanCoordinator : NSObject, UIGestureRecognizerDelegate {
     
     // MARK: Helper Methods
     
+    /// Returns the index at a specified point.
     public func index(at point: CGPoint) -> Int {
         return max(min(startingIndex + deltaIndex(at: point), maximumIndex), minimumIndex)
     }
@@ -405,6 +453,7 @@ public class PeekPanCoordinator : NSObject, UIGestureRecognizerDelegate {
     
     // MARK: UIGestureRecognizerDelegate
     
+    /// Determine whether a gesture recognizer can be used simultaneously with anothoer gesture recognizer. Returns true as long as one of the parameters includes the coordinator's gesture recognizer.
     public func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         return gestureRecognizer == self.gestureRecognizer || otherGestureRecognizer == self.gestureRecognizer
     }

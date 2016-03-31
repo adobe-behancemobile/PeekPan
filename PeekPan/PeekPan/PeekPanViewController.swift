@@ -18,46 +18,51 @@
 
 import UIKit
 
+/// PeekPanViewControllerDelegate protocol. Subclass of PeekPanCoordinatorDelegate.
 @objc public protocol PeekPanViewControllerDelegate : PeekPanCoordinatorDelegate {
+    /// Changes the view controller's view at a certain index. Return nil for no change.
     optional func view(for peekPanViewController: PeekPanViewController, atIndex index: Int) -> UIView?
+    /// Changes the view controller's view at a certain percentage. Return nil for no change.
     optional func view(for peekPanViewController: PeekPanViewController, atPercentage percentage: CGFloat) -> UIView?
 }
 
+/// PeekPanViewController class. Recommended to use this class as a PeekPanCoordinatorDelegate to function as intended.
 public class PeekPanViewController : UIViewController, PeekPanCoordinatorDelegate {
+    /// A reference to a view controller that finished setting up.
     public static var currentViewController: PeekPanViewController?
     
+    /// PeekPanViewControllerDelegate reference.
     public weak var delegate: PeekPanViewControllerDelegate?
+    /// An identifier to bind to the view controller. Used when committing a view controller.
     public var identifier: String?
+    /// An object to bind to the view controller. Used when committing a view controller.
     public var contentObject: AnyObject?
-    
-    override init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: NSBundle!) {
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-    }
-    
-    required public init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
     
     private func reset() {
         identifier = nil
         contentObject = nil
+        self.dynamicType.currentViewController = nil
     }
     
+    /// Setup to reset data and set currentViewController.
     public func setup() {
         setup(at: CGSizeZero)
     }
     
+    /// Setup to reset data, set the size of the view controller, and set currentViewController.
     public func setup(at size: CGSize) {
         reset()
         self.dynamicType.currentViewController = self
-        updateView(for: size)
+        updateSize(for: size)
     }
     
-    public func updateView() {
-        updateView(for: CGSizeZero)
+    /// Update the size of the view controller using 'sizeToFit()'.
+    public func updateSize() {
+        updateSize(for: CGSizeZero)
     }
     
-    public func updateView(for size: CGSize) {
+    /// Update the size of the view controller with a specified size. Use 'CGSizeZero' to update the size using 'sizeToFit()'.
+    public func updateSize(for size: CGSize) {
         if size == CGSizeZero {
             view.sizeToFit()
             preferredContentSize = view.bounds.size
