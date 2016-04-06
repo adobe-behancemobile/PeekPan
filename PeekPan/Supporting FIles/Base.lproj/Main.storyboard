@@ -613,7 +613,7 @@
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="4" maximumValue="25" translatesAutoresizingMaskIntoConstraints="NO" id="fTP-Nl-9fR">
+                                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="5" maximumValue="25" translatesAutoresizingMaskIntoConstraints="NO" id="fTP-Nl-9fR">
                                                 <rect key="frame" x="22" y="91" width="94" height="29"/>
                                                 <connections>
                                                     <action selector="cellNumChanged:" destination="NR4-TB-Q9W" eventType="valueChanged" id="QtE-Il-HkS"/>
@@ -634,7 +634,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yN4-j7-k7u">
                                         <rect key="frame" x="138" y="0.0" width="324" height="128"/>
                                         <subviews>
-                                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="3" minimumValue="1" maximumValue="5" translatesAutoresizingMaskIntoConstraints="NO" id="9ix-Ij-m4F">
+                                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="4" minimumValue="1" maximumValue="5" translatesAutoresizingMaskIntoConstraints="NO" id="9ix-Ij-m4F">
                                                 <rect key="frame" x="115" y="91" width="94" height="29"/>
                                                 <connections>
                                                     <action selector="cellPerRowChanged:" destination="NR4-TB-Q9W" eventType="valueChanged" id="IKB-ZO-7WX"/>
