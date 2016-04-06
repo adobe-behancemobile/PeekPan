@@ -26,20 +26,21 @@ class OnScreenCollectionViewController : BaseCollectionViewController, UIViewCon
     var highlightedView: UIView!
     var leftView: UIView!
     var rightView: UIView!
-    var panViewContainer: UIView!
+    var demoViewContainer: UIView!
     
     // MARK: UIViewController
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        setupImages()
+        for i in 0..<Int(cellNumStepper.maximumValue) {
+            thumbnailItems.append(getImage(from: "\(i)"))
+        }
     }
     
     override func viewDidDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
         
-        panViewContainer.removeFromSuperview()
+        demoViewContainer.removeFromSuperview()
         pointerView.removeFromSuperview()
     }
     
@@ -65,46 +66,50 @@ class OnScreenCollectionViewController : BaseCollectionViewController, UIViewCon
     // MARK: Methods
     
     func setupDemo() {
-        panViewContainer = UIView(frame: CGRectMake(PeekPanCoordinator.DefaultHorizontalMargin, 0.0, CGRectGetWidth(view.bounds) - 2*PeekPanCoordinator.DefaultHorizontalMargin, CGRectGetHeight(view.bounds)))
-        panViewContainer.clipsToBounds = true
-        panViewContainer.userInteractionEnabled = false
-        panViewContainer.hidden = true
+        demoViewContainer = UIView(frame: CGRectMake(PeekPanCoordinator.DefaultHorizontalMargin, 0.0, CGRectGetWidth(view.bounds) - 2*PeekPanCoordinator.DefaultHorizontalMargin, CGRectGetHeight(view.bounds)))
+        demoViewContainer.clipsToBounds = true
+        demoViewContainer.userInteractionEnabled = false
+        demoViewContainer.alpha = 0
         
         highlightedView = UIView(frame: CGRectMake(0.0, 0.0, 1.0, CGRectGetHeight(view.bounds)))
         highlightedView.alpha = 0.6
         highlightedView.backgroundColor = .greenColor()
-        panViewContainer.addSubview(highlightedView)
+        demoViewContainer.addSubview(highlightedView)
         
         leftView = UIView(frame: CGRectMake(0.0, 0.0, 1.0, CGRectGetHeight(view.bounds)))
         leftView.alpha = 0.2
         leftView.backgroundColor = .greenColor()
-        panViewContainer.addSubview(leftView)
+        demoViewContainer.addSubview(leftView)
         
         rightView = UIView(frame: CGRectMake(0.0, 0.0, 1.0, CGRectGetHeight(view.bounds)))
         rightView.alpha = 0.2
         rightView.backgroundColor = .greenColor()
-        panViewContainer.addSubview(rightView)
+        demoViewContainer.addSubview(rightView)
         
         pointerView = UIView(frame: CGRectMake(0.0, 0.0, 1.0, CGRectGetHeight(view.bounds)))
         pointerView.backgroundColor = .redColor()
-        pointerView.hidden = true
+        pointerView.alpha = 0
         
         if let app = UIApplication.sharedApplication().delegate as? AppDelegate, let window = app.window {
-            window.addSubview(panViewContainer)
+            window.addSubview(demoViewContainer)
             window.addSubview(pointerView)
         }
     }
     
-    func setupImages() {
-        for i in 1...4 {
-            thumbnailItems.append(UIImage(named: "image" + String(i))!)
-        }
+    override func cellNumChanged(sender: UIStepper) {
+        super.cellNumChanged(sender)
+        peekPanCoordinator.reloadData()
+    }
+    
+    override func toggleOverlay(sender: UISwitch) {
+        demoViewContainer.hidden = !sender.on
+        pointerView.hidden = !sender.on
     }
     
     // MARK: PeekPanCoordinatorDataSource
     
     func maximumIndex(for peekPanCoordinator: PeekPanCoordinator) -> Int {
-        return thumbnailItems.count - 1
+        return Int(cellNumStepper.value) - 1
     }
     
     func shouldStartFromMinimumIndex(for peekPanCoordinator: PeekPanCoordinator) -> Bool {
@@ -117,7 +122,7 @@ class OnScreenCollectionViewController : BaseCollectionViewController, UIViewCon
         peekPanCoordinator.startingIndex
         let startingPointInMargins = peekPanCoordinator.startingPoint.x - PeekPanCoordinator.DefaultHorizontalMargin
         
-        let segmentWidth = CGRectGetWidth(panViewContainer.bounds) / CGFloat(min(thumbnailItems.count, PeekPanCoordinator.DefaultPeekRange))
+        let segmentWidth = CGRectGetWidth(demoViewContainer.bounds) / CGFloat(min(thumbnailItems.count, PeekPanCoordinator.DefaultPeekRange))
         let deltaIndex = peekPanCoordinator.currentIndex - peekPanCoordinator.startingIndex
         if deltaIndex == 0 {
             highlightedView.frame = CGRectMake(startingPointInMargins - segmentWidth/2, 0.0, segmentWidth, CGRectGetHeight(view.bounds))
@@ -141,13 +146,13 @@ class OnScreenCollectionViewController : BaseCollectionViewController, UIViewCon
             rightView.frame.size.width = 0
         }
         
-        panViewContainer.hidden = false
-        pointerView.hidden = false
+        demoViewContainer.alpha = 1
+        pointerView.alpha = 1
     }
     
     func peekPanCoordinatorEnded(peekPanCoordinator: PeekPanCoordinator) {
-        panViewContainer.hidden = true
-        pointerView.hidden = true
+        demoViewContainer.alpha = 0
+        pointerView.alpha = 0
     }
     
     func peekPanCoordinatorUpdated(peekPanCoordinator: PeekPanCoordinator) {
@@ -155,7 +160,7 @@ class OnScreenCollectionViewController : BaseCollectionViewController, UIViewCon
         
         let startingPointInMargins = peekPanCoordinator.startingPoint.x - PeekPanCoordinator.DefaultHorizontalMargin
         
-        let segmentWidth = CGRectGetWidth(panViewContainer.bounds) / CGFloat(min(thumbnailItems.count, PeekPanCoordinator.DefaultPeekRange))
+        let segmentWidth = CGRectGetWidth(demoViewContainer.bounds) / CGFloat(min(Int(cellNumStepper.value), PeekPanCoordinator.DefaultPeekRange))
         let deltaIndex = peekPanCoordinator.currentIndex - peekPanCoordinator.startingIndex
         if deltaIndex == 0 {
             highlightedView.frame = CGRectMake(startingPointInMargins - segmentWidth/2, 0.0, segmentWidth, CGRectGetHeight(view.bounds))

@@ -77,7 +77,7 @@ class ContentPreviewCollectionViewController : BaseCollectionViewController, UIV
         demoViewContainer = UIView(frame: CGRectMake(PeekPanCoordinator.DefaultHorizontalMargin, 0.0, demoPeekPanCoordinator.maximumPoint.x - PeekPanCoordinator.DefaultHorizontalMargin, CGRectGetHeight(view.bounds)))
         demoViewContainer.clipsToBounds = true
         demoViewContainer.userInteractionEnabled = false
-        demoViewContainer.hidden = true
+        demoViewContainer.alpha = 0
         
         rangeView = UIView(frame: CGRectMake(0.0, 0.0, 1.0, CGRectGetHeight(view.bounds)))
         rangeView.alpha = 0.2
@@ -91,7 +91,7 @@ class ContentPreviewCollectionViewController : BaseCollectionViewController, UIV
         
         pointerView = UIView(frame: CGRectMake(0.0, 0.0, 1.0, CGRectGetHeight(view.bounds)))
         pointerView.backgroundColor = .redColor()
-        pointerView.hidden = true
+        pointerView.alpha = 0
         
         if let app = UIApplication.sharedApplication().delegate as? AppDelegate, let window = app.window {
             window.addSubview(demoViewContainer)
@@ -100,18 +100,23 @@ class ContentPreviewCollectionViewController : BaseCollectionViewController, UIV
     }
     
     func setupImages() {
-        for i in 1...2 {
-            let projectCoverImageName = "proj" + String(i)
-            let projectImage = UIImage(named: projectCoverImageName)!
+        for i in 0..<Int(cellNumStepper.maximumValue) {
+            let projectIndex = i%3 + 1
+            let projectImage = UIImage(named: "proj" + String(projectIndex))!
             var content = [ImageTableItem]()
-            content.append(ImageTableItem(image: projectImage, text: projectCoverImageName))
+            content.append(ImageTableItem(image: projectImage, text: "proj\(i+1)"))
             for j in 1...3 {
-                let contentImageName = "cont" + String(i) + "-" + String(j)
-                content.append(ImageTableItem(image: UIImage(named: contentImageName)!, text: contentImageName))
+                let contentImageName = "cont" + String(projectIndex) + "-" + String(j)
+                content.append(ImageTableItem(image: UIImage(named: contentImageName)!, text: "cont\(i+1)-\(j)"))
             }
             thumbnailItems.append(projectImage)
             imageCollectionItems.append(ImageCollectionItem(projId: i, contentItems: content))
         }
+    }
+    
+    override func toggleOverlay(sender: UISwitch) {
+        demoViewContainer.hidden = !sender.on
+        pointerView.hidden = !sender.on
     }
     
     // MARK: PeekPanCoordinatorDataSource
@@ -122,10 +127,6 @@ class ContentPreviewCollectionViewController : BaseCollectionViewController, UIV
     
     func shouldStartFromMinimumIndex(for peekPanCoordinator: PeekPanCoordinator) -> Bool {
         return true
-    }
-    
-    func maxPeekRange(for peekPanCoordinator: PeekPanCoordinator) -> Int {
-        return PeekPanCoordinator.DefaultPeekRange * 2
     }
     
     // MARK: PeekPanCoordinatorDelegate
@@ -141,13 +142,13 @@ class ContentPreviewCollectionViewController : BaseCollectionViewController, UIV
         rangeView.frame = CGRectMake(minPointInMargins, 0.0, maxPointInMargins - minPointInMargins, CGRectGetHeight(view.bounds))
         valueView.frame = CGRectMake(minPointInMargins, 0.0, CGFloat(peekPanCoordinator.currentIndex + 1) * segmentWidth, CGRectGetHeight(view.bounds))
         
-        demoViewContainer.hidden = false
-        pointerView.hidden = false
+        demoViewContainer.alpha = 1
+        pointerView.alpha = 1
     }
     
     func peekPanCoordinatorEnded(peekPanCoordinator: PeekPanCoordinator) {
-        demoViewContainer.hidden = true
-        pointerView.hidden = true
+        demoViewContainer.alpha = 0
+        pointerView.alpha = 0
     }
     
     func peekPanCoordinatorUpdated(peekPanCoordinator: PeekPanCoordinator) {
