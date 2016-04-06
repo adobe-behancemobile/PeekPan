@@ -44,7 +44,7 @@ import UIKit
      
      Returns: Default is false.
      */
-    func shouldStartFromMinimumIndex(for peekPanCoordinator: PeekPanCoordinator) -> Bool
+    optional func shouldStartFromMinimumIndex(for peekPanCoordinator: PeekPanCoordinator) -> Bool
     
     /**
      Sets the  minimum index of a range of indices. The maximum index has to be greater than or equal to the minimum index for "peekPanCoordinator:movedTo:" to work. Method is called upon setup.
@@ -215,7 +215,7 @@ public class PeekPanCoordinator : NSObject, UIGestureRecognizerDelegate {
         
         minimumIndex = dataSource?.minimumIndex?(for: self) ?? 0
         maximumIndex = dataSource?.maximumIndex(for: self) ?? 0
-        startFromMinimum = dataSource?.shouldStartFromMinimumIndex(for: self) ?? false
+        startFromMinimum = dataSource?.shouldStartFromMinimumIndex?(for: self) ?? false
         
         let numOfIndices = maximumIndex - minimumIndex + 1
         if let delegatePeekRange = dataSource?.maxPeekRange?(for: self)
@@ -390,7 +390,7 @@ public class PeekPanCoordinator : NSObject, UIGestureRecognizerDelegate {
     public func reloadData() {
         minimumIndex = dataSource?.minimumIndex?(for: self) ?? 0
         maximumIndex = dataSource?.maximumIndex(for: self) ?? 0
-        startFromMinimum = dataSource?.shouldStartFromMinimumIndex(for: self) ?? false
+        startFromMinimum = dataSource?.shouldStartFromMinimumIndex?(for: self) ?? false
         
         let numOfIndices = maximumIndex - minimumIndex + 1
         if let delegatePeekRange = dataSource?.maxPeekRange?(for: self)
