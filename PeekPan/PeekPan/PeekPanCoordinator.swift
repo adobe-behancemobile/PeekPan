@@ -432,7 +432,7 @@ public class PeekPanCoordinator : NSObject, UIGestureRecognizerDelegate {
     }
     
     private func deltaIndex(at point: CGPoint) -> Int {
-        let segmentWidth = widthOfEachSegment()
+        let segmentWidth = max(widthOfEachSegment(), 1)
         let deltaX = point.x - startingPoint.x
         
         if startFromMinimum {
