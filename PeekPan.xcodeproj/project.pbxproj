@@ -23,7 +23,18 @@
 		5C15FF901CAAEA0400B7E0CD /* PeekPanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C15FF8D1CAAEA0400B7E0CD /* PeekPanViewController.swift */; };
 		5C15FF951CAAEA1600B7E0CD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C15FF911CAAEA1600B7E0CD /* Assets.xcassets */; };
 		5C15FF9B1CAAEBFC00B7E0CD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C15FF971CAAEAB300B7E0CD /* Main.storyboard */; };
+		7FF13C901D8DB67E00600B7E /* PeekPanTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FF13C8F1D8DB67E00600B7E /* PeekPanTests.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		7FF13C921D8DB67E00600B7E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5C7002581C6285A300E1C41B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5C70025F1C6285A300E1C41B;
+			remoteInfo = PeekPan;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		5C15FF721CAAE9C900B7E0CD /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = PeekPan/Demo/AppDelegate.swift; sourceTree = SOURCE_ROOT; };
@@ -45,10 +56,20 @@
 		5C15FF981CAAEAB300B7E0CD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "PeekPan/Supporting FIles/Base.lproj/Main.storyboard"; sourceTree = SOURCE_ROOT; };
 		5C15FF9A1CAAEB9900B7E0CD /* PeekPan-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "PeekPan-Bridging-Header.h"; path = "PeekPan/PeekPan/PeekPan-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
 		5C7002601C6285A300E1C41B /* PeekPan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PeekPan.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7FF13C8D1D8DB67E00600B7E /* PeekPanTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PeekPanTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7FF13C8F1D8DB67E00600B7E /* PeekPanTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeekPanTests.swift; sourceTree = "<group>"; };
+		7FF13C911D8DB67E00600B7E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		5C70025D1C6285A300E1C41B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7FF13C8A1D8DB67E00600B7E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -62,6 +83,7 @@
 			isa = PBXGroup;
 			children = (
 				5C7002621C6285A300E1C41B /* PeekPan */,
+				7FF13C8E1D8DB67E00600B7E /* PeekPanTests */,
 				5C7002611C6285A300E1C41B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -70,6 +92,7 @@
 			isa = PBXGroup;
 			children = (
 				5C7002601C6285A300E1C41B /* PeekPan.app */,
+				7FF13C8D1D8DB67E00600B7E /* PeekPanTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -147,6 +170,15 @@
 			name = model;
 			sourceTree = "<group>";
 		};
+		7FF13C8E1D8DB67E00600B7E /* PeekPanTests */ = {
+			isa = PBXGroup;
+			children = (
+				7FF13C8F1D8DB67E00600B7E /* PeekPanTests.swift */,
+				7FF13C911D8DB67E00600B7E /* Info.plist */,
+			);
+			path = PeekPanTests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -167,19 +199,43 @@
 			productReference = 5C7002601C6285A300E1C41B /* PeekPan.app */;
 			productType = "com.apple.product-type.application";
 		};
+		7FF13C8C1D8DB67E00600B7E /* PeekPanTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7FF13C961D8DB67E00600B7E /* Build configuration list for PBXNativeTarget "PeekPanTests" */;
+			buildPhases = (
+				7FF13C891D8DB67E00600B7E /* Sources */,
+				7FF13C8A1D8DB67E00600B7E /* Frameworks */,
+				7FF13C8B1D8DB67E00600B7E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7FF13C931D8DB67E00600B7E /* PBXTargetDependency */,
+			);
+			name = PeekPanTests;
+			productName = PeekPanTests;
+			productReference = 7FF13C8D1D8DB67E00600B7E /* PeekPanTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		5C7002581C6285A300E1C41B /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0720;
+				LastSwiftUpdateCheck = 0800;
 				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = behance;
 				TargetAttributes = {
 					5C70025F1C6285A300E1C41B = {
 						CreatedOnToolsVersion = 7.2;
 						LastSwiftMigration = 0800;
+					};
+					7FF13C8C1D8DB67E00600B7E = {
+						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = K5MZY8Q33Y;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 5C70025F1C6285A300E1C41B;
 					};
 				};
 			};
@@ -197,6 +253,7 @@
 			projectRoot = "";
 			targets = (
 				5C70025F1C6285A300E1C41B /* PeekPan */,
+				7FF13C8C1D8DB67E00600B7E /* PeekPanTests */,
 			);
 		};
 /* End PBXProject section */
@@ -208,6 +265,13 @@
 			files = (
 				5C15FF9B1CAAEBFC00B7E0CD /* Main.storyboard in Resources */,
 				5C15FF951CAAEA1600B7E0CD /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7FF13C8B1D8DB67E00600B7E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -235,7 +299,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		7FF13C891D8DB67E00600B7E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7FF13C901D8DB67E00600B7E /* PeekPanTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		7FF13C931D8DB67E00600B7E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5C70025F1C6285A300E1C41B /* PeekPan */;
+			targetProxy = 7FF13C921D8DB67E00600B7E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		5C15FF971CAAEAB300B7E0CD /* Main.storyboard */ = {
@@ -376,6 +456,43 @@
 			};
 			name = Release;
 		};
+		7FF13C941D8DB67E00600B7E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				DEVELOPMENT_TEAM = K5MZY8Q33Y;
+				INFOPLIST_FILE = PeekPanTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.behance.PeekPanTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PeekPan.app/PeekPan";
+			};
+			name = Debug;
+		};
+		7FF13C951D8DB67E00600B7E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				DEVELOPMENT_TEAM = K5MZY8Q33Y;
+				INFOPLIST_FILE = PeekPanTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.behance.PeekPanTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PeekPan.app/PeekPan";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -396,6 +513,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		7FF13C961D8DB67E00600B7E /* Build configuration list for PBXNativeTarget "PeekPanTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7FF13C941D8DB67E00600B7E /* Debug */,
+				7FF13C951D8DB67E00600B7E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
