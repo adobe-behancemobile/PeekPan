@@ -4,5 +4,5 @@ before_install:
  - gem install xcpretty 
  - gem install xcpretty-travis-formatter
 script:
- - set -o pipefail &&  xcodebuild -project PeekPan.xcodeproj -scheme PeekPanTests -sdk iphonesimulator -destination 'platform=iOS Simulator,OS=10.0,name:iPhone 7' build-for-testing | xcpretty -f `xcpretty-travis-formatter`
- - set -o pipefail &&  xcodebuild -project PeekPan.xcodeproj -scheme PeekPanTests -sdk iphonesimulator -destination 'platform=iOS Simulator,OS=10.0,name:iPhone 7' test-without-building | xcpretty
+ - set -o pipefail &&  xcodebuild -project PeekPan.xcodeproj -scheme PeekPanTests -sdk iphonesimulator -destination 'platform=iOS Simulator,id:5F911B30-5F23-403B-9697-1DFDC24773C8,OS=10.0' build-for-testing | xcpretty -f `xcpretty-travis-formatter`
+ - set -o pipefail &&  xcodebuild -project PeekPan.xcodeproj -scheme PeekPanTests -sdk iphonesimulator -destination 'platform=iOS Simulator,id:5F911B30-5F23-403B-9697-1DFDC24773C8,OS=10.0' test-without-building | xcpretty
