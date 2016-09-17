@@ -1,0 +1,3 @@
+xcode_project: PeekPan.xcodeproj
+xcode_scheme: PeekPan
+osx_image: xcode8
