@@ -33,28 +33,28 @@ class OnScreenCollectionViewController : BaseCollectionViewController, UIViewCon
     override func viewDidLoad() {
         super.viewDidLoad()
         for i in 0..<Int(cellNumStepper.maximumValue) {
-            thumbnailItems.append(getImage(from: "\(i)"))
+            thumbnailItems.append(getImage(from: "\(i)" as NSString))
         }
     }
     
-    override func viewDidDisappear(animated: Bool) {
+    override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         
         demoViewContainer.removeFromSuperview()
         pointerView.removeFromSuperview()
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         setupDemo()
     }
     
-    override func traitCollectionDidChange(previousTraitCollection: UITraitCollection?) {
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
         if #available(iOS 9.0, *) {
-            if traitCollection.forceTouchCapability == .Available {
-                registerForPreviewingWithDelegate(self, sourceView: collectionView)
+            if traitCollection.forceTouchCapability == .available {
+                registerForPreviewing(with: self, sourceView: collectionView)
                 peekPanCoordinator = PeekPanCoordinator(sourceView: collectionView)
                 peekPanCoordinator.delegate = peekPanVC
                 peekPanCoordinator.dataSource = self
@@ -66,44 +66,44 @@ class OnScreenCollectionViewController : BaseCollectionViewController, UIViewCon
     // MARK: Methods
     
     func setupDemo() {
-        demoViewContainer = UIView(frame: CGRectMake(PeekPanCoordinator.DefaultHorizontalMargin, 0.0, CGRectGetWidth(view.bounds) - 2*PeekPanCoordinator.DefaultHorizontalMargin, CGRectGetHeight(view.bounds)))
+        demoViewContainer = UIView(frame: CGRect(x: PeekPanCoordinator.DefaultHorizontalMargin, y: 0.0, width: view.bounds.width - 2*PeekPanCoordinator.DefaultHorizontalMargin, height: view.bounds.height))
         demoViewContainer.clipsToBounds = true
-        demoViewContainer.userInteractionEnabled = false
+        demoViewContainer.isUserInteractionEnabled = false
         demoViewContainer.alpha = 0
         
-        highlightedView = UIView(frame: CGRectMake(0.0, 0.0, 1.0, CGRectGetHeight(view.bounds)))
+        highlightedView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 1.0, height: view.bounds.height))
         highlightedView.alpha = 0.6
-        highlightedView.backgroundColor = .greenColor()
+        highlightedView.backgroundColor = .green
         demoViewContainer.addSubview(highlightedView)
         
-        leftView = UIView(frame: CGRectMake(0.0, 0.0, 1.0, CGRectGetHeight(view.bounds)))
+        leftView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 1.0, height: view.bounds.height))
         leftView.alpha = 0.2
-        leftView.backgroundColor = .greenColor()
+        leftView.backgroundColor = .green
         demoViewContainer.addSubview(leftView)
         
-        rightView = UIView(frame: CGRectMake(0.0, 0.0, 1.0, CGRectGetHeight(view.bounds)))
+        rightView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 1.0, height: view.bounds.height))
         rightView.alpha = 0.2
-        rightView.backgroundColor = .greenColor()
+        rightView.backgroundColor = .green
         demoViewContainer.addSubview(rightView)
         
-        pointerView = UIView(frame: CGRectMake(0.0, 0.0, 1.0, CGRectGetHeight(view.bounds)))
-        pointerView.backgroundColor = .redColor()
+        pointerView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 1.0, height: view.bounds.height))
+        pointerView.backgroundColor = .red
         pointerView.alpha = 0
         
-        if let app = UIApplication.sharedApplication().delegate as? AppDelegate, let window = app.window {
+        if let app = UIApplication.shared.delegate as? AppDelegate, let window = app.window {
             window.addSubview(demoViewContainer)
             window.addSubview(pointerView)
         }
     }
     
-    override func cellNumChanged(sender: UIStepper) {
+    override func cellNumChanged(_ sender: UIStepper) {
         super.cellNumChanged(sender)
         peekPanCoordinator.reloadData()
     }
     
-    override func toggleOverlay(sender: UISwitch) {
-        demoViewContainer.hidden = !sender.on
-        pointerView.hidden = !sender.on
+    override func toggleOverlay(_ sender: UISwitch) {
+        demoViewContainer.isHidden = !sender.isOn
+        pointerView.isHidden = !sender.isOn
     }
     
     // MARK: PeekPanCoordinatorDataSource
@@ -118,29 +118,29 @@ class OnScreenCollectionViewController : BaseCollectionViewController, UIViewCon
     
     // MARK: PeekPanControllerDelegate
     
-    func peekPanCoordinatorBegan(peekPanCoordinator: PeekPanCoordinator) {
-        peekPanCoordinator.startingIndex
+    func peekPanCoordinatorBegan(_ peekPanCoordinator: PeekPanCoordinator) {
+        
         let startingPointInMargins = peekPanCoordinator.startingPoint.x - PeekPanCoordinator.DefaultHorizontalMargin
         
-        let segmentWidth = CGRectGetWidth(demoViewContainer.bounds) / CGFloat(min(thumbnailItems.count, PeekPanCoordinator.DefaultPeekRange))
+        let segmentWidth = demoViewContainer.bounds.width / CGFloat(min(thumbnailItems.count, PeekPanCoordinator.DefaultPeekRange))
         let deltaIndex = peekPanCoordinator.currentIndex - peekPanCoordinator.startingIndex
         if deltaIndex == 0 {
-            highlightedView.frame = CGRectMake(startingPointInMargins - segmentWidth/2, 0.0, segmentWidth, CGRectGetHeight(view.bounds))
+            highlightedView.frame = CGRect(x: startingPointInMargins - segmentWidth/2, y: 0.0, width: segmentWidth, height: view.bounds.height)
         }
         else if deltaIndex > 0 {
-            highlightedView.frame = CGRectMake(startingPointInMargins - segmentWidth/2 + CGFloat(deltaIndex)*segmentWidth, 0.0, segmentWidth, CGRectGetHeight(view.bounds))
+            highlightedView.frame = CGRect(x: startingPointInMargins - segmentWidth/2 + CGFloat(deltaIndex)*segmentWidth, y: 0.0, width: segmentWidth, height: view.bounds.height)
         }
         else {
-            highlightedView.frame = CGRectMake(startingPointInMargins - segmentWidth/2 + CGFloat(deltaIndex)*segmentWidth, 0.0, segmentWidth, CGRectGetHeight(view.bounds))
+            highlightedView.frame = CGRect(x: startingPointInMargins - segmentWidth/2 + CGFloat(deltaIndex)*segmentWidth, y: 0.0, width: segmentWidth, height: view.bounds.height)
         }
         if peekPanCoordinator.currentIndex != 0 {
-            leftView.frame = CGRectMake(CGRectGetMinX(highlightedView.frame) - segmentWidth, 0.0, segmentWidth, CGRectGetHeight(view.bounds))
+            leftView.frame = CGRect(x: highlightedView.frame.minX - segmentWidth, y: 0.0, width: segmentWidth, height: view.bounds.height)
         }
         else {
             leftView.frame.size.width = 0
         }
         if peekPanCoordinator.currentIndex != peekPanCoordinator.maximumIndex {
-            rightView.frame = CGRectMake(CGRectGetMaxX(highlightedView.frame), 0.0, segmentWidth, CGRectGetHeight(view.bounds))
+            rightView.frame = CGRect(x: highlightedView.frame.maxX, y: 0.0, width: segmentWidth, height: view.bounds.height)
         }
         else {
             rightView.frame.size.width = 0
@@ -150,35 +150,35 @@ class OnScreenCollectionViewController : BaseCollectionViewController, UIViewCon
         pointerView.alpha = 1
     }
     
-    func peekPanCoordinatorEnded(peekPanCoordinator: PeekPanCoordinator) {
+    func peekPanCoordinatorEnded(_ peekPanCoordinator: PeekPanCoordinator) {
         demoViewContainer.alpha = 0
         pointerView.alpha = 0
     }
     
-    func peekPanCoordinatorUpdated(peekPanCoordinator: PeekPanCoordinator) {
-        pointerView.frame = CGRectMake(peekPanCoordinator.currentPoint.x, 0.0, 1.0, CGRectGetHeight(view.bounds))
+    func peekPanCoordinatorUpdated(_ peekPanCoordinator: PeekPanCoordinator) {
+        pointerView.frame = CGRect(x: peekPanCoordinator.currentPoint.x, y: 0.0, width: 1.0, height: view.bounds.height)
         
         let startingPointInMargins = peekPanCoordinator.startingPoint.x - PeekPanCoordinator.DefaultHorizontalMargin
         
-        let segmentWidth = CGRectGetWidth(demoViewContainer.bounds) / CGFloat(min(Int(cellNumStepper.value), PeekPanCoordinator.DefaultPeekRange))
+        let segmentWidth = demoViewContainer.bounds.width / CGFloat(min(Int(cellNumStepper.value), PeekPanCoordinator.DefaultPeekRange))
         let deltaIndex = peekPanCoordinator.currentIndex - peekPanCoordinator.startingIndex
         if deltaIndex == 0 {
-            highlightedView.frame = CGRectMake(startingPointInMargins - segmentWidth/2, 0.0, segmentWidth, CGRectGetHeight(view.bounds))
+            highlightedView.frame = CGRect(x: startingPointInMargins - segmentWidth/2, y: 0.0, width: segmentWidth, height: view.bounds.height)
         }
         else if deltaIndex > 0 {
-            highlightedView.frame = CGRectMake(startingPointInMargins - segmentWidth/2 + CGFloat(deltaIndex)*segmentWidth, 0.0, segmentWidth, CGRectGetHeight(view.bounds))
+            highlightedView.frame = CGRect(x: startingPointInMargins - segmentWidth/2 + CGFloat(deltaIndex)*segmentWidth, y: 0.0, width: segmentWidth, height: view.bounds.height)
         }
         else {
-            highlightedView.frame = CGRectMake(startingPointInMargins - segmentWidth/2 + CGFloat(deltaIndex)*segmentWidth, 0.0, segmentWidth, CGRectGetHeight(view.bounds))
+            highlightedView.frame = CGRect(x: startingPointInMargins - segmentWidth/2 + CGFloat(deltaIndex)*segmentWidth, y: 0.0, width: segmentWidth, height: view.bounds.height)
         }
         if peekPanCoordinator.currentIndex != 0 {
-            leftView.frame = CGRectMake(CGRectGetMinX(highlightedView.frame) - segmentWidth, 0.0, segmentWidth, CGRectGetHeight(view.bounds))
+            leftView.frame = CGRect(x: highlightedView.frame.minX - segmentWidth, y: 0.0, width: segmentWidth, height: view.bounds.height)
         }
         else {
             leftView.frame.size.width = 0
         }
         if peekPanCoordinator.currentIndex != peekPanCoordinator.maximumIndex {
-            rightView.frame = CGRectMake(CGRectGetMaxX(highlightedView.frame), 0.0, segmentWidth, CGRectGetHeight(view.bounds))
+            rightView.frame = CGRect(x: highlightedView.frame.maxX, y: 0.0, width: segmentWidth, height: view.bounds.height)
         }
         else {
             rightView.frame.size.width = 0
@@ -194,19 +194,19 @@ class OnScreenCollectionViewController : BaseCollectionViewController, UIViewCon
     // MARK: UIViewControllerPreviewingDelegate
     
     @available (iOS 9.0, *)
-    func previewingContext(previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
-        guard let indexPath = collectionView.indexPathForItemAtPoint(location) else { return nil }
-        guard let cell = collectionView.cellForItemAtIndexPath(indexPath) else { return nil }
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
+        guard let indexPath = collectionView.indexPathForItem(at: location) else { return nil }
+        guard let cell = collectionView.cellForItem(at: indexPath) else { return nil }
         
         previewingContext.sourceRect = cell.frame
         
-        peekPanCoordinator.setup(at: indexPath.item)
+        peekPanCoordinator.setup(at: (indexPath as NSIndexPath).item)
         
         return peekPanVC
     }
     
     @available (iOS 9.0, *)
-    func previewingContext(previewingContext: UIViewControllerPreviewing, commitViewController viewControllerToCommit: UIViewController) {
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
         peekPanCoordinator.end(true)
     }
 }

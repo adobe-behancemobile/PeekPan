@@ -21,49 +21,49 @@ import UIKit
 /// PeekPanViewControllerDelegate protocol. Subclass of PeekPanCoordinatorDelegate.
 @objc public protocol PeekPanViewControllerDelegate : PeekPanCoordinatorDelegate {
     /// Changes the view controller's view at a certain index. Return nil for no change.
-    optional func view(for peekPanViewController: PeekPanViewController, atIndex index: Int) -> UIView?
+    @objc optional func view(for peekPanViewController: PeekPanViewController, atIndex index: Int) -> UIView?
     /// Changes the view controller's view at a certain percentage. Return nil for no change.
-    optional func view(for peekPanViewController: PeekPanViewController, atPercentage percentage: CGFloat) -> UIView?
+    @objc optional func view(for peekPanViewController: PeekPanViewController, atPercentage percentage: CGFloat) -> UIView?
 }
 
 /// PeekPanViewController class. Recommended to use this class as a PeekPanCoordinatorDelegate to function as intended.
-public class PeekPanViewController : UIViewController, PeekPanCoordinatorDelegate {
+open class PeekPanViewController : UIViewController, PeekPanCoordinatorDelegate {
     /// A reference to a view controller that finished setting up.
-    public static var currentViewController: PeekPanViewController?
+    open static var currentViewController: PeekPanViewController?
     
     /// PeekPanViewControllerDelegate reference.
-    public weak var delegate: PeekPanViewControllerDelegate?
+    open weak var delegate: PeekPanViewControllerDelegate?
     /// An identifier to bind to the view controller. Used when committing a view controller.
-    public var identifier: String?
+    open var identifier: String?
     /// An object to bind to the view controller. Used when committing a view controller.
-    public var contentObject: AnyObject?
+    open var contentObject: AnyObject?
     
-    private func reset() {
+    fileprivate func reset() {
         identifier = nil
         contentObject = nil
-        self.dynamicType.currentViewController = nil
+        type(of: self).currentViewController = nil
     }
     
     /// Setup to reset data and set currentViewController.
-    public func setup() {
-        setup(at: CGSizeZero)
+    open func setup() {
+        setup(at: CGSize.zero)
     }
     
     /// Setup to reset data, set the size of the view controller, and set currentViewController.
-    public func setup(at size: CGSize) {
+    open func setup(at size: CGSize) {
         reset()
-        self.dynamicType.currentViewController = self
+        type(of: self).currentViewController = self
         updateSize(for: size)
     }
     
     /// Update the size of the view controller using 'sizeToFit()'.
-    public func updateSize() {
-        updateSize(for: CGSizeZero)
+    open func updateSize() {
+        updateSize(for: CGSize.zero)
     }
     
     /// Update the size of the view controller with a specified size. Use 'CGSizeZero' to update the size using 'sizeToFit()'.
-    public func updateSize(for size: CGSize) {
-        if size == CGSizeZero {
+    open func updateSize(for size: CGSize) {
+        if size == CGSize.zero {
             view.sizeToFit()
             preferredContentSize = view.bounds.size
         }
@@ -74,11 +74,11 @@ public class PeekPanViewController : UIViewController, PeekPanCoordinatorDelegat
     
     // MARK: PeekPanCoordinatorDelegate
     
-    public func peekPanCoordinatorBegan(peekPanCoordinator: PeekPanCoordinator) {
+    open func peekPanCoordinatorBegan(_ peekPanCoordinator: PeekPanCoordinator) {
         delegate?.peekPanCoordinatorBegan?(peekPanCoordinator)
     }
     
-    public func peekPanCoordinatorUpdated(peekPanCoordinator: PeekPanCoordinator) {
+    open func peekPanCoordinatorUpdated(_ peekPanCoordinator: PeekPanCoordinator) {
         delegate?.peekPanCoordinatorUpdated?(peekPanCoordinator)
         guard let viewAtPercentage = delegate?.view?(for: self, atPercentage: peekPanCoordinator.percentage) else { return }
         view = viewAtPercentage
@@ -86,7 +86,7 @@ public class PeekPanViewController : UIViewController, PeekPanCoordinatorDelegat
         preferredContentSize = view.bounds.size
     }
     
-    public func peekPanCoordinator(peekPanCoordinator: PeekPanCoordinator, movedTo index: Int) {
+    open func peekPanCoordinator(_ peekPanCoordinator: PeekPanCoordinator, movedTo index: Int) {
         delegate?.peekPanCoordinator?(peekPanCoordinator, movedTo: index)
         guard let viewAtIndex = delegate?.view?(for: self, atIndex: index) else { return }
         view = viewAtIndex
@@ -94,7 +94,7 @@ public class PeekPanViewController : UIViewController, PeekPanCoordinatorDelegat
         preferredContentSize = view.bounds.size
     }
     
-    public func peekPanCoordinatorEnded(peekPanCoordinator: PeekPanCoordinator) {
+    open func peekPanCoordinatorEnded(_ peekPanCoordinator: PeekPanCoordinator) {
         delegate?.peekPanCoordinatorEnded?(peekPanCoordinator)
         reset()
     }

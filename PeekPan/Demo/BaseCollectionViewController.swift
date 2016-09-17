@@ -39,48 +39,48 @@ class BaseCollectionViewController : UIViewController, UICollectionViewDataSourc
         super.init(coder: aDecoder)
     }
     
-    @IBAction func cellNumChanged(sender: UIStepper) {
+    @IBAction func cellNumChanged(_ sender: UIStepper) {
         cellNumLabel.text = "\(Int(sender.value)) Cells"
         collectionView.reloadData()
     }
     
-    @IBAction func cellPerRowChanged(sender: UIStepper) {
+    @IBAction func cellPerRowChanged(_ sender: UIStepper) {
         cellPerRowLabel.text = "\(Int(sender.value)) Cells Per Row"
         collectionView.reloadData()
     }
     
-    @IBAction func toggleOverlay(sender: UISwitch) { }
+    @IBAction func toggleOverlay(_ sender: UISwitch) { }
     
     func getImage(from string: NSString) -> UIImage {
-        let font = UIFont.boldSystemFontOfSize(100.0)
-        let size = string.sizeWithAttributes([NSFontAttributeName: font])
+        let font = UIFont.boldSystemFont(ofSize: 100.0)
+        let size = string.size(attributes: [NSFontAttributeName: font])
         UIGraphicsBeginImageContext(size)
-        string.drawAtPoint(CGPointZero, withAttributes: [NSFontAttributeName: font])
+        string.draw(at: CGPoint.zero, withAttributes: [NSFontAttributeName: font])
         let image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
-        return image
+        return image!
     }
     
     // MARK: UICollectionViewDataSource
     
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return Int(cellNumStepper.value)
     }
     
     // MARK: UICollectionViewDelegate
     
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellIdentifier, forIndexPath: indexPath) as! ImageCollectionCell
-        cell.imageView.image = thumbnailItems[indexPath.row]
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as! ImageCollectionCell
+        cell.imageView.image = thumbnailItems[(indexPath as NSIndexPath).row]
         return cell
     }
     
     // MARK: UICollectionViewDelegateFlowLayout
     
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        guard let flowLayout = collectionViewLayout as? UICollectionViewFlowLayout else { return CGSizeZero }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        guard let flowLayout = collectionViewLayout as? UICollectionViewFlowLayout else { return CGSize.zero }
         
-        let size = CGRectGetWidth(view.bounds)/CGFloat(cellPerRowStepper.value) - flowLayout.minimumInteritemSpacing
-        return CGSizeMake(size, size)
+        let size = view.bounds.width/CGFloat(cellPerRowStepper.value) - flowLayout.minimumInteritemSpacing
+        return CGSize(width: size, height: size)
     }
 }

@@ -49,23 +49,23 @@ class ImageTableViewController : UIViewController, UITableViewDataSource, UITabl
     
     // MARK: PeekPanCoordinatorDelegate
     
-    func peekPanCoordinator(peekPanCoordinator: PeekPanCoordinator, movedTo index: Int) {
-        let indexPath = NSIndexPath(forRow: index, inSection: 0)
-        let cellRect = tableView.rectForRowAtIndexPath(indexPath)
+    func peekPanCoordinator(_ peekPanCoordinator: PeekPanCoordinator, movedTo index: Int) {
+        let indexPath = IndexPath(row: index, section: 0)
+        let cellRect = tableView.rectForRow(at: indexPath)
         tableView.contentOffset = cellRect.origin
-        preferredContentSize = CGSizeMake(CGRectGetWidth(cellRect), CGRectGetHeight(cellRect) - 1)
+        preferredContentSize = CGSize(width: cellRect.width, height: cellRect.height - 1)
     }
     
     // MARK: UITableViewDataSource
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return imageTableItems.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as! ImageTableViewCell
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) as! ImageTableViewCell
         
-        let item = imageCollectionItem.contentItems[indexPath.row]
+        let item = imageCollectionItem.contentItems[(indexPath as NSIndexPath).row]
         cell.tableImageView.image = item.image
         cell.headerLabel.text = item.text
         
@@ -74,10 +74,10 @@ class ImageTableViewController : UIViewController, UITableViewDataSource, UITabl
     
     // MARK: UITableViewDelegate
     
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        let imageSize = imageTableItems[indexPath.row].image.size
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let imageSize = imageTableItems[(indexPath as NSIndexPath).row].image.size
         let aspectRatio = imageSize.width/imageSize.height
-        return CGRectGetWidth(tableView.bounds)/aspectRatio + 50.0
+        return tableView.bounds.width/aspectRatio + 50.0
     }
     
 }

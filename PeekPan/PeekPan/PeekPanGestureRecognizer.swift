@@ -19,33 +19,33 @@
 import UIKit
 
 class PeekPanGestureRecognizer : UIGestureRecognizer {
-    private let previewForceAmount: CGFloat = 0.5
+    fileprivate let previewForceAmount: CGFloat = 0.5
     
-    override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent) {
-        super.touchesMoved(touches, withEvent: event)
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent) {
+        super.touchesMoved(touches, with: event)
         guard let touch = touches.first else { return }
         
         if #available(iOS 9.0, *) {
-            if case .Possible = state
-                where touch.force/touch.maximumPossibleForce > previewForceAmount {
-                state = .Began
+            if case .possible = state
+                , touch.force/touch.maximumPossibleForce > previewForceAmount {
+                state = .began
             }
-            else if case .Began = state {
-                state = .Changed
+            else if case .began = state {
+                state = .changed
             }
         }
         else {
-            state = .Failed
+            state = .failed
         }
     }
     
-    override func touchesCancelled(touches: Set<UITouch>, withEvent event: UIEvent) {
-        super.touchesCancelled(touches, withEvent: event)
-        state = .Cancelled
+    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent) {
+        super.touchesCancelled(touches, with: event)
+        state = .cancelled
     }
     
-    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent) {
-        super.touchesEnded(touches, withEvent: event)
-        state = .Ended
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent) {
+        super.touchesEnded(touches, with: event)
+        state = .ended
     }
 }

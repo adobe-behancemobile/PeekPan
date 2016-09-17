@@ -19,7 +19,7 @@
 import UIKit
 
 class ContentPreviewCollectionViewController : BaseCollectionViewController, UIViewControllerPreviewingDelegate, PeekPanCoordinatorDataSource {
-    var imageTableVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("ImageTableViewController") as! ImageTableViewController
+    var imageTableVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ImageTableViewController") as! ImageTableViewController
     var imageCollectionItems = [ImageCollectionItem]()
     
     var peekPanCoordinator: PeekPanCoordinator!
@@ -41,24 +41,24 @@ class ContentPreviewCollectionViewController : BaseCollectionViewController, UIV
         setupImages()
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         setupDemo()
     }
     
-    override func viewDidDisappear(animated: Bool) {
+    override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         
         demoViewContainer.removeFromSuperview()
         pointerView.removeFromSuperview()
     }
     
-    override func traitCollectionDidChange(previousTraitCollection: UITraitCollection?) {
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
         if #available(iOS 9.0, *) {
-            if traitCollection.forceTouchCapability == .Available {
-                registerForPreviewingWithDelegate(self, sourceView: collectionView)
+            if traitCollection.forceTouchCapability == .available {
+                registerForPreviewing(with: self, sourceView: collectionView)
                 peekPanCoordinator = PeekPanCoordinator(sourceView: collectionView)
                 
                 peekPanCoordinator.delegate = imageTableVC
@@ -74,26 +74,26 @@ class ContentPreviewCollectionViewController : BaseCollectionViewController, UIV
         demoPeekPanCoordinator.delegate = self
         demoPeekPanCoordinator.dataSource = self
         
-        demoViewContainer = UIView(frame: CGRectMake(PeekPanCoordinator.DefaultHorizontalMargin, 0.0, demoPeekPanCoordinator.maximumPoint.x - PeekPanCoordinator.DefaultHorizontalMargin, CGRectGetHeight(view.bounds)))
+        demoViewContainer = UIView(frame: CGRect(x: PeekPanCoordinator.DefaultHorizontalMargin, y: 0.0, width: demoPeekPanCoordinator.maximumPoint.x - PeekPanCoordinator.DefaultHorizontalMargin, height: view.bounds.height))
         demoViewContainer.clipsToBounds = true
-        demoViewContainer.userInteractionEnabled = false
+        demoViewContainer.isUserInteractionEnabled = false
         demoViewContainer.alpha = 0
         
-        rangeView = UIView(frame: CGRectMake(0.0, 0.0, 1.0, CGRectGetHeight(view.bounds)))
+        rangeView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 1.0, height: view.bounds.height))
         rangeView.alpha = 0.2
-        rangeView.backgroundColor = .greenColor()
+        rangeView.backgroundColor = .green
         demoViewContainer.addSubview(rangeView)
         
-        valueView = UIView(frame: CGRectMake(0.0, 0.0, 1.0, CGRectGetHeight(view.bounds)))
+        valueView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 1.0, height: view.bounds.height))
         valueView.alpha = 0.4
-        valueView.backgroundColor = .greenColor()
+        valueView.backgroundColor = .green
         demoViewContainer.addSubview(valueView)
         
-        pointerView = UIView(frame: CGRectMake(0.0, 0.0, 1.0, CGRectGetHeight(view.bounds)))
-        pointerView.backgroundColor = .redColor()
+        pointerView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 1.0, height: view.bounds.height))
+        pointerView.backgroundColor = .red
         pointerView.alpha = 0
         
-        if let app = UIApplication.sharedApplication().delegate as? AppDelegate, let window = app.window {
+        if let app = UIApplication.shared.delegate as? AppDelegate, let window = app.window {
             window.addSubview(demoViewContainer)
             window.addSubview(pointerView)
         }
@@ -114,9 +114,9 @@ class ContentPreviewCollectionViewController : BaseCollectionViewController, UIV
         }
     }
     
-    override func toggleOverlay(sender: UISwitch) {
-        demoViewContainer.hidden = !sender.on
-        pointerView.hidden = !sender.on
+    override func toggleOverlay(_ sender: UISwitch) {
+        demoViewContainer.isHidden = !sender.isOn
+        pointerView.isHidden = !sender.isOn
     }
     
     // MARK: PeekPanCoordinatorDataSource
@@ -131,56 +131,56 @@ class ContentPreviewCollectionViewController : BaseCollectionViewController, UIV
     
     // MARK: PeekPanCoordinatorDelegate
     
-    func peekPanCoordinatorBegan(peekPanCoordinator: PeekPanCoordinator) {
-        pointerView.frame = CGRectMake(peekPanCoordinator.currentPoint.x, 0.0, 1.0, CGRectGetHeight(view.bounds))
+    func peekPanCoordinatorBegan(_ peekPanCoordinator: PeekPanCoordinator) {
+        pointerView.frame = CGRect(x: peekPanCoordinator.currentPoint.x, y: 0.0, width: 1.0, height: view.bounds.height)
         
         let minPointInMargins = peekPanCoordinator.minimumPoint.x - PeekPanCoordinator.DefaultHorizontalMargin
         let maxPointInMargins = peekPanCoordinator.maximumPoint.x - PeekPanCoordinator.DefaultHorizontalMargin
         
         let segmentWidth = (peekPanCoordinator.maximumPoint.x - peekPanCoordinator.minimumPoint.x) / CGFloat(imageTableVC.imageTableItems.count)
         
-        rangeView.frame = CGRectMake(minPointInMargins, 0.0, maxPointInMargins - minPointInMargins, CGRectGetHeight(view.bounds))
-        valueView.frame = CGRectMake(minPointInMargins, 0.0, CGFloat(peekPanCoordinator.currentIndex + 1) * segmentWidth, CGRectGetHeight(view.bounds))
+        rangeView.frame = CGRect(x: minPointInMargins, y: 0.0, width: maxPointInMargins - minPointInMargins, height: view.bounds.height)
+        valueView.frame = CGRect(x: minPointInMargins, y: 0.0, width: CGFloat(peekPanCoordinator.currentIndex + 1) * segmentWidth, height: view.bounds.height)
         
         demoViewContainer.alpha = 1
         pointerView.alpha = 1
     }
     
-    func peekPanCoordinatorEnded(peekPanCoordinator: PeekPanCoordinator) {
+    func peekPanCoordinatorEnded(_ peekPanCoordinator: PeekPanCoordinator) {
         demoViewContainer.alpha = 0
         pointerView.alpha = 0
     }
     
-    func peekPanCoordinatorUpdated(peekPanCoordinator: PeekPanCoordinator) {
-        pointerView.frame = CGRectMake(peekPanCoordinator.currentPoint.x, 0.0, 1.0, CGRectGetHeight(view.bounds))
+    func peekPanCoordinatorUpdated(_ peekPanCoordinator: PeekPanCoordinator) {
+        pointerView.frame = CGRect(x: peekPanCoordinator.currentPoint.x, y: 0.0, width: 1.0, height: view.bounds.height)
         
         let minPointInMargins = peekPanCoordinator.minimumPoint.x - PeekPanCoordinator.DefaultHorizontalMargin
         let maxPointInMargins = peekPanCoordinator.maximumPoint.x - PeekPanCoordinator.DefaultHorizontalMargin
         
         let segmentWidth = (peekPanCoordinator.maximumPoint.x - peekPanCoordinator.minimumPoint.x) / CGFloat(imageTableVC.imageTableItems.count)
         
-        rangeView.frame = CGRectMake(minPointInMargins, 0.0, maxPointInMargins - minPointInMargins, CGRectGetHeight(view.bounds))
-        valueView.frame = CGRectMake(minPointInMargins, 0.0, CGFloat(peekPanCoordinator.currentIndex + 1) * segmentWidth, CGRectGetHeight(view.bounds))
+        rangeView.frame = CGRect(x: minPointInMargins, y: 0.0, width: maxPointInMargins - minPointInMargins, height: view.bounds.height)
+        valueView.frame = CGRect(x: minPointInMargins, y: 0.0, width: CGFloat(peekPanCoordinator.currentIndex + 1) * segmentWidth, height: view.bounds.height)
     }
     
     // MARK: UICollectionViewDelegate
     
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        let item = imageCollectionItems[indexPath.row]
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: IndexPath) {
+        let item = imageCollectionItems[(indexPath as NSIndexPath).row]
         imageTableVC.imageCollectionItem = item
-        navigationController?.showViewController(imageTableVC, sender: self)
+        navigationController?.show(imageTableVC, sender: self)
     }
     
     // MARK: UIViewControllerPreviewingDelegate
     
     @available (iOS 9.0, *)
-    func previewingContext(previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
-        guard let indexPath = collectionView.indexPathForItemAtPoint(location) else { return nil }
-        guard let cell = collectionView.cellForItemAtIndexPath(indexPath) else { return nil }
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
+        guard let indexPath = collectionView.indexPathForItem(at: location) else { return nil }
+        guard let cell = collectionView.cellForItem(at: indexPath) else { return nil }
         
         previewingContext.sourceRect = cell.frame
         
-        let item = imageCollectionItems[indexPath.row]
+        let item = imageCollectionItems[(indexPath as NSIndexPath).row]
         imageTableVC.imageCollectionItem = item
         
         peekPanCoordinator.setup(at: 0)
@@ -190,9 +190,9 @@ class ContentPreviewCollectionViewController : BaseCollectionViewController, UIV
     }
     
     @available (iOS 9.0, *)
-    func previewingContext(previewingContext: UIViewControllerPreviewing, commitViewController viewControllerToCommit: UIViewController) {
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
         peekPanCoordinator.end(true)
         demoPeekPanCoordinator.end(true)
-        navigationController?.showViewController(imageTableVC, sender: self)
+        navigationController?.show(imageTableVC, sender: self)
     }
 }

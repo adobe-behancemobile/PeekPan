@@ -18,8 +18,8 @@
 import UIKit
 
 class ImageTableItem {
-    private(set) var image: UIImage!
-    private(set) var text: String
+    fileprivate(set) var image: UIImage!
+    fileprivate(set) var text: String
     
     required init(image: UIImage, text: String) {
         self.image = image
