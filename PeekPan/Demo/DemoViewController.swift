@@ -31,13 +31,13 @@ class DemoViewController : UIViewController, UIViewControllerPreviewingDelegate,
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        redView = UIView(frame: CGRectMake(0.0, 0.0, CGRectGetWidth(view.bounds), CGRectGetHeight(view.bounds)))
-        greenView = UIView(frame: CGRectMake(0.0, 0.0, 0.0, CGRectGetHeight(view.bounds)))
-        yellowView = UIView(frame: CGRectMake(0.0, 0.0, 0.0, CGRectGetHeight(view.bounds)))
+        redView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: view.bounds.width, height: view.bounds.height))
+        greenView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 0.0, height: view.bounds.height))
+        yellowView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 0.0, height: view.bounds.height))
         
-        redView.backgroundColor = .redColor()
-        greenView.backgroundColor = .greenColor()
-        yellowView.backgroundColor = .yellowColor()
+        redView.backgroundColor = .red
+        greenView.backgroundColor = .green
+        yellowView.backgroundColor = .yellow
         
         view.addSubview(redView)
         view.addSubview(greenView)
@@ -45,11 +45,11 @@ class DemoViewController : UIViewController, UIViewControllerPreviewingDelegate,
         yellowView.addSubview(percentageLabel)
     }
     
-    override func traitCollectionDidChange(previousTraitCollection: UITraitCollection?) {
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
         if #available(iOS 9.0, *) {
-            if traitCollection.forceTouchCapability == .Available {
-                registerForPreviewingWithDelegate(self, sourceView: view)
+            if traitCollection.forceTouchCapability == .available {
+                registerForPreviewing(with: self, sourceView: view)
                 peekPanCoordinator = PeekPanCoordinator(sourceView: view)
                 peekPanCoordinator.delegate = self
                 peekPanCoordinator.dataSource = self
@@ -69,36 +69,36 @@ class DemoViewController : UIViewController, UIViewControllerPreviewingDelegate,
     
     // MARK: PeekPanCoordinatorDelegate
     
-    func peekPanCoordinatorBegan(peekPanCoordinator: PeekPanCoordinator) {
+    func peekPanCoordinatorBegan(_ peekPanCoordinator: PeekPanCoordinator) {
         greenView.frame.origin.x = peekPanCoordinator.startingPoint.x
-        greenView.frame.size.width = CGRectGetWidth(peekPanCoordinator.sourceView.bounds) - peekPanCoordinator.startingPoint.x
+        greenView.frame.size.width = peekPanCoordinator.sourceView.bounds.width - peekPanCoordinator.startingPoint.x
         yellowView.frame.origin.x = peekPanCoordinator.startingPoint.x
     }
     
-    func peekPanCoordinatorEnded(peekPanCoordinator: PeekPanCoordinator) {
+    func peekPanCoordinatorEnded(_ peekPanCoordinator: PeekPanCoordinator) {
         greenView.frame.size.width = 0.0
         yellowView.frame.size.width = 0.0
         percentageLabel.text = ""
     }
     
-    func peekPanCoordinatorUpdated(peekPanCoordinator: PeekPanCoordinator) {
+    func peekPanCoordinatorUpdated(_ peekPanCoordinator: PeekPanCoordinator) {
         greenView.frame.origin.x = peekPanCoordinator.minimumPoint.x
         greenView.frame.size.width = peekPanCoordinator.maximumPoint.x - peekPanCoordinator.minimumPoint.x
         yellowView.frame.origin.x = peekPanCoordinator.minimumPoint.x
         yellowView.frame.size.width = peekPanCoordinator.percentage * (peekPanCoordinator.maximumPoint.x - peekPanCoordinator.minimumPoint.x);
         percentageLabel.text = String(format: "%.2f", Double(peekPanCoordinator.percentage))
         percentageLabel.sizeToFit()
-        percentageLabel.frame.origin = CGPointMake(0.0, CGRectGetHeight(yellowView.bounds)/2)
+        percentageLabel.frame.origin = CGPoint(x: 0.0, y: yellowView.bounds.height/2)
     }
     
     // MARK: UIViewControllerPreviewingDelegate
     
-    func previewingContext(previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
         peekPanCoordinator.setup()
         return nil
     }
     
-    func previewingContext(previewingContext: UIViewControllerPreviewing, commitViewController viewControllerToCommit: UIViewController) {
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
         peekPanCoordinator.end(true)
     }
 }

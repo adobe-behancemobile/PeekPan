@@ -47,16 +47,16 @@ class ImageEditorController : UIViewController, UIViewControllerPreviewingDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        brightnessLabel.text = String(brightnessValue)
-        contrastLabel.text = String(contrastValue)
-        sharpnessLabel.text = String(sharpnessValue)
+        brightnessLabel.text = String(describing: brightnessValue)
+        contrastLabel.text = String(describing: contrastValue)
+        sharpnessLabel.text = String(describing: sharpnessValue)
     }
     
-    override func traitCollectionDidChange(previousTraitCollection: UITraitCollection?) {
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
         if #available(iOS 9.0, *) {
-            if traitCollection.forceTouchCapability == .Available {
-                registerForPreviewingWithDelegate(self, sourceView: view)
+            if traitCollection.forceTouchCapability == .available {
+                registerForPreviewing(with: self, sourceView: view)
                 peekPanCoordinator = PeekPanCoordinator(sourceView: view)
                 peekPanCoordinator.delegate = peekPanVC
                 peekPanCoordinator.dataSource = self
@@ -67,19 +67,19 @@ class ImageEditorController : UIViewController, UIViewControllerPreviewingDelega
     
     // MARK: Methods
     
-    @IBAction func didSetBrightness(sender: UISlider) {
+    @IBAction func didSetBrightness(_ sender: UISlider) {
         brightnessValue = CGFloat(sender.value)
         brightnessLabel.text = NSString(format: "%.2f", sender.value) as String
         updateImageWithCurrentValues(imageView)
     }
     
-    @IBAction func didSetContrast(sender: UISlider) {
+    @IBAction func didSetContrast(_ sender: UISlider) {
         contrastValue = CGFloat(sender.value)
         contrastLabel.text = NSString(format: "%.2f", sender.value) as String
         updateImageWithCurrentValues(imageView)
     }
     
-    @IBAction func didSetSharpness(sender: UISlider) {
+    @IBAction func didSetSharpness(_ sender: UISlider) {
         sharpnessValue = CGFloat(sender.value)
         sharpnessLabel.text = NSString(format: "%.2f", sender.value) as String
         updateImageWithCurrentValues(imageView)
@@ -114,20 +114,20 @@ class ImageEditorController : UIViewController, UIViewControllerPreviewingDelega
         }
     }
     
-    func updateImageWithCurrentValues(imageView: UIImageView) {
+    func updateImageWithCurrentValues(_ imageView: UIImageView) {
         let context = CIContext(options: nil)
-        var extent = CGRectZero
+        var extent = CGRect.zero
         let colorFilter = CIFilter(name: "CIColorControls")! // brightness & contrast
         colorFilter.setValue(coreImage, forKey: kCIInputImageKey)
         colorFilter.setValue(brightnessValue, forKey: kCIInputBrightnessKey)
         colorFilter.setValue(contrastValue, forKey: kCIInputContrastKey)
-        var outputImage = colorFilter.valueForKey(kCIOutputImageKey) as! CIImage
+        var outputImage = colorFilter.value(forKey: kCIOutputImageKey) as! CIImage
         let sharpnessFilter = CIFilter(name: "CISharpenLuminance")!
         sharpnessFilter.setValue(outputImage, forKey: kCIInputImageKey)
         sharpnessFilter.setValue(sharpnessValue, forKey: kCIInputSharpnessKey)
-        outputImage = sharpnessFilter.valueForKey(kCIOutputImageKey) as! CIImage
+        outputImage = sharpnessFilter.value(forKey: kCIOutputImageKey) as! CIImage
         extent = outputImage.extent
-        imageView.image = UIImage(CGImage: context.createCGImage(outputImage, fromRect: extent))
+        imageView.image = UIImage(cgImage: context.createCGImage(outputImage, from: extent)!)
     }
     
     // MARK: PeekPanCoordinatorDataSource
@@ -144,20 +144,20 @@ class ImageEditorController : UIViewController, UIViewControllerPreviewingDelega
         if let slider = selectedSlider {
             return slider.frame.origin
         }
-        return CGPointZero
+        return CGPoint.zero
     }
     
     func maximumPoint(for peekPanCoordinator: PeekPanCoordinator) -> CGPoint {
         if let slider = selectedSlider {
-            return CGPointMake(CGRectGetMaxX(slider.frame), CGRectGetMaxY(slider.frame))
+            return CGPoint(x: slider.frame.maxX, y: slider.frame.maxY)
         }
-        return CGPointZero
+        return CGPoint.zero
     }
     
     // MARK: PeekPanViewControllerDelegate
     
-    func peekPanCoordinatorEnded(peekPanCoordinator: PeekPanCoordinator) {
-        if peekPanCoordinator.state == .Popped {
+    func peekPanCoordinatorEnded(_ peekPanCoordinator: PeekPanCoordinator) {
+        if peekPanCoordinator.state == .popped {
             updateSelected()
             updateImageWithCurrentValues(imageView)
         }
@@ -170,9 +170,9 @@ class ImageEditorController : UIViewController, UIViewControllerPreviewingDelega
     func view(for peekPanViewController: PeekPanViewController, atPercentage percentage: CGFloat) -> UIView? {
         let imageView = UIImageView()
         let valueLabel = UILabel()
-        valueLabel.textColor = .whiteColor()
-        valueLabel.frame.origin = CGPointMake(20, 20)
-        valueLabel.font = UIFont.systemFontOfSize(38)
+        valueLabel.textColor = .white
+        valueLabel.frame.origin = CGPoint(x: 20, y: 20)
+        valueLabel.font = UIFont.systemFont(ofSize: 38)
         valueLabel.backgroundColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.3)
         imageView.addSubview(valueLabel)
         if selectedSlider == brightnessSlider {
@@ -181,7 +181,7 @@ class ImageEditorController : UIViewController, UIViewControllerPreviewingDelega
         }
         else if selectedSlider == contrastSlider {
             let range = CGFloat(contrastSlider.maximumValue - contrastSlider.minimumValue) * 0.3
-            let startingValue = (CGFloat(peekPanCoordinator.startingPoint.x) - CGRectGetMinX(selectedSlider!.frame)) / CGRectGetWidth(selectedSlider!.bounds) * CGFloat(contrastSlider.maximumValue - contrastSlider.minimumValue)
+            let startingValue = (CGFloat(peekPanCoordinator.startingPoint.x) - selectedSlider!.frame.minX) / selectedSlider!.bounds.width * CGFloat(contrastSlider.maximumValue - contrastSlider.minimumValue)
             contrastValue = min(max(range * percentage + (startingValue - range/2), CGFloat(contrastSlider.minimumValue)), CGFloat(contrastSlider.maximumValue))
             valueLabel.text = NSString(format: "%.2f", contrastValue) as String
         }
@@ -190,11 +190,11 @@ class ImageEditorController : UIViewController, UIViewControllerPreviewingDelega
             valueLabel.text = NSString(format: "%.2f", sharpnessValue) as String
             
             let zoomRatio: CGFloat = 0.3
-            imageView.layer.contentsRect = CGRectMake(
-                0.5 - (CGRectGetWidth(self.imageView.bounds)*zoomRatio/2)/CGRectGetWidth(self.imageView.bounds),
-                0.5 - (CGRectGetHeight(self.imageView.bounds)*zoomRatio)/CGRectGetHeight(self.imageView.bounds),
-                zoomRatio,
-                zoomRatio)
+            imageView.layer.contentsRect = CGRect(
+                x: 0.5 - (self.imageView.bounds.width*zoomRatio/2)/self.imageView.bounds.width,
+                y: 0.5 - (self.imageView.bounds.height*zoomRatio)/self.imageView.bounds.height,
+                width: zoomRatio,
+                height: zoomRatio)
         }
         
         valueLabel.sizeToFit()
@@ -206,14 +206,14 @@ class ImageEditorController : UIViewController, UIViewControllerPreviewingDelega
     // MARK: UIViewControllerPreviewingDelegate
     
     @available (iOS 9.0, *)
-    func previewingContext(previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
-        if CGRectContainsPoint(brightnessSlider.frame, location) {
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
+        if brightnessSlider.frame.contains(location) {
             selectedSlider = brightnessSlider
         }
-        else if CGRectContainsPoint(contrastSlider.frame, location) {
+        else if contrastSlider.frame.contains(location) {
             selectedSlider = contrastSlider
         }
-        else if CGRectContainsPoint(sharpnessSlider.frame, location) {
+        else if sharpnessSlider.frame.contains(location) {
             selectedSlider = sharpnessSlider
         }
         else {
@@ -227,7 +227,7 @@ class ImageEditorController : UIViewController, UIViewControllerPreviewingDelega
     }
     
     @available (iOS 9.0, *)
-    func previewingContext(previewingContext: UIViewControllerPreviewing, commitViewController viewControllerToCommit: UIViewController) {
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
         peekPanCoordinator.end(true)
     }
 }

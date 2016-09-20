@@ -18,8 +18,8 @@
 import UIKit
 
 class ImageCollectionItem {
-    private(set) var projId: Int
-    private(set) var contentItems: [ImageTableItem]
+    fileprivate(set) var projId: Int
+    fileprivate(set) var contentItems: [ImageTableItem]
     
     required init(projId: Int, contentItems: [ImageTableItem]) {
         self.projId = projId
